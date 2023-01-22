@@ -44,40 +44,40 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBIaOreCXDNNfycDzC7fupRCWUyGTYpMMM',
-    appId: '1:158965784497:web:11c7e5dd0281ef6d58e790',
-    messagingSenderId: '158965784497',
-    projectId: 'tccapp2023',
-    authDomain: 'tccapp2023.firebaseapp.com',
-    storageBucket: 'tccapp2023.appspot.com',
-    measurementId: 'G-H4WYCRH5VN',
+    apiKey: 'AIzaSyAVogRl8U4Y2wX2VluJliDlh1VIIOSISV4',
+    appId: '1:180488290427:web:ec19ab93177565674be2de',
+    messagingSenderId: '180488290427',
+    projectId: 'tcc-app-2022',
+    authDomain: 'tcc-app-2022.firebaseapp.com',
+    storageBucket: 'tcc-app-2022.appspot.com',
+    measurementId: 'G-QC5NDKTD3L',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyD7tqsLElmNhVk0YALypxdaycw6bldtM9Y',
-    appId: '1:158965784497:android:de45821ac8b9aed758e790',
-    messagingSenderId: '158965784497',
-    projectId: 'tccapp2023',
-    storageBucket: 'tccapp2023.appspot.com',
+    apiKey: 'AIzaSyBl6zIXe4H_hq8lVqOCDLJB36kifjPE-oE',
+    appId: '1:180488290427:android:ee825b0959493eb54be2de',
+    messagingSenderId: '180488290427',
+    projectId: 'tcc-app-2022',
+    storageBucket: 'tcc-app-2022.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBJweYWk51Xj-7dQWpmoOGEERRoXLJwUrY',
-    appId: '1:158965784497:ios:76bcc7cdd5f6beb858e790',
-    messagingSenderId: '158965784497',
-    projectId: 'tccapp2023',
-    storageBucket: 'tccapp2023.appspot.com',
-    iosClientId: '158965784497-c2uo4u2dulu0c7hnmboct790qgvlhd1e.apps.googleusercontent.com',
+    apiKey: 'AIzaSyAHfjxmh1Mb4IGsi6f2rORDHQijwuWodO0',
+    appId: '1:180488290427:ios:97f301ca321a1eb34be2de',
+    messagingSenderId: '180488290427',
+    projectId: 'tcc-app-2022',
+    storageBucket: 'tcc-app-2022.appspot.com',
+    iosClientId: '180488290427-t7manbl9fu3m171r0qr0ukcurr8gmdh2.apps.googleusercontent.com',
     iosBundleId: 'com.example.tccApp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBJweYWk51Xj-7dQWpmoOGEERRoXLJwUrY',
-    appId: '1:158965784497:ios:76bcc7cdd5f6beb858e790',
-    messagingSenderId: '158965784497',
-    projectId: 'tccapp2023',
-    storageBucket: 'tccapp2023.appspot.com',
-    iosClientId: '158965784497-c2uo4u2dulu0c7hnmboct790qgvlhd1e.apps.googleusercontent.com',
+    apiKey: 'AIzaSyAHfjxmh1Mb4IGsi6f2rORDHQijwuWodO0',
+    appId: '1:180488290427:ios:97f301ca321a1eb34be2de',
+    messagingSenderId: '180488290427',
+    projectId: 'tcc-app-2022',
+    storageBucket: 'tcc-app-2022.appspot.com',
+    iosClientId: '180488290427-t7manbl9fu3m171r0qr0ukcurr8gmdh2.apps.googleusercontent.com',
     iosBundleId: 'com.example.tccApp',
   );
 }
