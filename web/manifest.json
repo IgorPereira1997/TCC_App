@@ -1,6 +1,6 @@
 {
-    "name": "tcc_app",
-    "short_name": "tcc_app",
+    "name": "tcc_fisio_app",
+    "short_name": "tcc_fisio_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

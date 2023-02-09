@@ -44,40 +44,42 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCKtMkt9LEOzjVg3ig0OKPG_RAzQxCd4oM',
-    appId: '1:419439547055:web:ced4d01e9cb105126ffa5a',
-    messagingSenderId: '419439547055',
-    projectId: 'tcc-app-itp',
-    authDomain: 'tcc-app-itp.firebaseapp.com',
-    storageBucket: 'tcc-app-itp.appspot.com',
-    measurementId: 'G-6D6P2VQL0W',
+    apiKey: 'AIzaSyB-PKwQogUXZxe9odTgXjfULhX7aHl2xxk',
+    appId: '1:237626148759:web:84f892082c1e3925e766d2',
+    messagingSenderId: '237626148759',
+    projectId: 'tcc-igor-fisioapp',
+    authDomain: 'tcc-igor-fisioapp.firebaseapp.com',
+    storageBucket: 'tcc-igor-fisioapp.appspot.com',
+    measurementId: 'G-LMK69K803R',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDgZ079hrrr3oeZOH--w3zysgA2qz_06lM',
-    appId: '1:419439547055:android:5daf540e4249e2fa6ffa5a',
-    messagingSenderId: '419439547055',
-    projectId: 'tcc-app-itp',
-    storageBucket: 'tcc-app-itp.appspot.com',
+    apiKey: 'AIzaSyAA_5GOA8Xr9570GcN6klnSm19LbhjHsKA',
+    appId: '1:237626148759:android:76e40c412f913098e766d2',
+    messagingSenderId: '237626148759',
+    projectId: 'tcc-igor-fisioapp',
+    storageBucket: 'tcc-igor-fisioapp.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyD87OGvxQQTmcXRhEp8B7i6bXF3xq__zGQ',
-    appId: '1:419439547055:ios:5515aa9dfe4bef156ffa5a',
-    messagingSenderId: '419439547055',
-    projectId: 'tcc-app-itp',
-    storageBucket: 'tcc-app-itp.appspot.com',
-    iosClientId: '419439547055-jamched4556eielg3niusfahonaosg8v.apps.googleusercontent.com',
-    iosBundleId: 'com.example.tccApp',
+    apiKey: 'AIzaSyBEB8ulRJfwBGAH6MqNzazvBdhcrgLIip4',
+    appId: '1:237626148759:ios:2e774fc94be0c39ee766d2',
+    messagingSenderId: '237626148759',
+    projectId: 'tcc-igor-fisioapp',
+    storageBucket: 'tcc-igor-fisioapp.appspot.com',
+    androidClientId: '237626148759-7b8s1kam6jkoa6g0b940b7omtt8cvemv.apps.googleusercontent.com',
+    iosClientId: '237626148759-c67pltv5m9ncui8qopoe1j7rvrrhmqir.apps.googleusercontent.com',
+    iosBundleId: 'com.example.tccFisioApp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyD87OGvxQQTmcXRhEp8B7i6bXF3xq__zGQ',
-    appId: '1:419439547055:ios:5515aa9dfe4bef156ffa5a',
-    messagingSenderId: '419439547055',
-    projectId: 'tcc-app-itp',
-    storageBucket: 'tcc-app-itp.appspot.com',
-    iosClientId: '419439547055-jamched4556eielg3niusfahonaosg8v.apps.googleusercontent.com',
-    iosBundleId: 'com.example.tccApp',
+    apiKey: 'AIzaSyBEB8ulRJfwBGAH6MqNzazvBdhcrgLIip4',
+    appId: '1:237626148759:ios:2e774fc94be0c39ee766d2',
+    messagingSenderId: '237626148759',
+    projectId: 'tcc-igor-fisioapp',
+    storageBucket: 'tcc-igor-fisioapp.appspot.com',
+    androidClientId: '237626148759-7b8s1kam6jkoa6g0b940b7omtt8cvemv.apps.googleusercontent.com',
+    iosClientId: '237626148759-c67pltv5m9ncui8qopoe1j7rvrrhmqir.apps.googleusercontent.com',
+    iosBundleId: 'com.example.tccFisioApp',
   );
 }

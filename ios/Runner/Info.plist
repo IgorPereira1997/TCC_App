@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Tcc App</string>
+	<string>Tcc Fisio App</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>tcc_app</string>
+	<string>tcc_fisio_app</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -54,11 +54,18 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<!-- TODO Replace this value: -->
-				<!-- Copied from GoogleService-Info.plist key REVERSED_CLIENT_ID -->
-				<string>com.googleusercontent.apps.419439547055-jamched4556eielg3niusfahonaosg8v</string>
+				<string>fb2069509059913430</string>
+				<string>com.googleusercontent.apps.237626148759-c67pltv5m9ncui8qopoe1j7rvrrhmqir</string>
 			</array>
 		</dict>
 	</array>
+	<key>FacebookAppID</key>
+	<string>2069509059913430</string>
+	<key>FacebookClientToken</key>
+	<string>f4c3cd5e5762e983200ff2144a4a14f2</string>
+	<key>FacebookDisplayName</key>
+	<string>blue-f_auth</string>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
 </dict>
 </plist>

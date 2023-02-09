@@ -1,4 +1,4 @@
-package com.example.tcc_app
+package com.example.tcc_fisio_app
 
 import io.flutter.embedding.android.FlutterActivity
 
