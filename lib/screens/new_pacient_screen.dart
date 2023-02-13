@@ -30,10 +30,10 @@ class ProfilePacientScreen extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(height: 20.0),
-                CustomBackButton(onTap: () {}),
+                const CustomBackButton(),
                 const SizedBox(height: 50.0),
                 const Text(
-                  "Dados Pessoais do Paciente",
+                  "Cadastrar Paciente",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 30,
@@ -69,6 +69,19 @@ class ProfilePacientScreen extends StatelessWidget {
                         labelText: 'Nome',
                         validator: teste,
                         controller: nameController,
+                        obscureText: false,
+                        enableSuggestions: true,
+                        autocorrect: true,
+                        keyboardType: TextInputType.text,
+                      ),
+                      const SizedBox(height: 20.0),
+
+// TODO Modelo de data de nascimento
+
+                      CustomField(
+                        choosedIcon: FontAwesomeIcons.cakeCandles,
+                        controller: addressController,
+                        labelText: 'Data de Nascimento',
                         obscureText: false,
                         enableSuggestions: true,
                         autocorrect: true,
@@ -115,18 +128,30 @@ class ProfilePacientScreen extends StatelessWidget {
                         keyboardType: TextInputType.text,
                       ),
                       const SizedBox(height: 20.0),
+
+// TODO Selecionar dentre as opções
+
                       CustomField(
-                        choosedIcon: FontAwesomeIcons.hospitalUser,
-                        controller: allergiesController,
-                        labelText: 'Alergias',
-                        obscureText: true,
-                        enableSuggestions: false,
-                        autocorrect: false,
+                        choosedIcon: FontAwesomeIcons.rectangleList,
+                        controller: addressController,
+                        labelText: 'Estado Civil',
+                        obscureText: false,
+                        enableSuggestions: true,
+                        autocorrect: true,
                         keyboardType: TextInputType.text,
-                        validator: (value) {
-                          return null;
-                        },
                       ),
+                      const SizedBox(height: 20.0),
+
+                      CustomField(
+                        choosedIcon: FontAwesomeIcons.briefcase,
+                        controller: addressController,
+                        labelText: 'Profissão/Atuação',
+                        obscureText: false,
+                        enableSuggestions: true,
+                        autocorrect: true,
+                        keyboardType: TextInputType.text,
+                      ),
+
                       const SizedBox(
                         height: 50.0,
                       ),

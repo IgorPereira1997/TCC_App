@@ -1,5 +1,7 @@
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:tcc_fisio_app/res/custom_colors.dart';
+import 'package:tcc_fisio_app/screens/signup_screen.dart';
 import 'package:tcc_fisio_app/services/firebase_auth_methods.dart';
 import 'package:tcc_fisio_app/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -7,15 +9,29 @@ import 'package:provider/provider.dart';
 import 'package:tcc_fisio_app/widgets/custom_button_transparent.dart';
 import 'package:tcc_fisio_app/widgets/custom_signup_field.dart';
 
-class HomeAppScreen extends StatelessWidget {
+class HomeAppScreen extends StatefulWidget {
   const HomeAppScreen({super.key});
 
   @override
+  State<HomeAppScreen> createState() => _HomeAppScreenState();
+}
+
+class _HomeAppScreenState extends State<HomeAppScreen> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  void loginUser() {
+    context.read<FirebaseAuthMethods>().loginWithEmail(
+          email: emailController.text,
+          password: passwordController.text,
+          context: context,
+        );
+  }
+
+  @override
   Widget build(BuildContext context) {
-    TextEditingController crefitoController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
-    final user = context.read<FirebaseAuthMethods>().user;
-    final fullName = user.displayName!.split(' ');
+    //final user = context.read<FirebaseAuthMethods>().user;
+    //final fullName = user.displayName!.split(' ');
     return Scaffold(
       backgroundColor: CustomColors.appBackgroudColor,
       body: SafeArea(
@@ -28,28 +44,29 @@ class HomeAppScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const SizedBox(height: 50.0),
-              const Text(
-                "EasyCIF",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: 30,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 50.0),
+              //const SizedBox(height: 150.0),
+              //Text(
+              //  "AvaliaFisio",
+              //  textAlign: TextAlign.center,
+              //  style: GoogleFonts.josefinSans(
+              //    color: Colors.white,
+              //    fontSize: 30,
+              //    fontWeight: FontWeight.bold,
+              //  ),
+              //),
+              //const SizedBox(height: 30.0),
               Flexible(
                 flex: 1,
                 child: Image.asset(
                   'lib/assets/fisioterapia_logo.png',
-                  height: 300,
+                  height: 500,
                 ),
               ),
-              const SizedBox(height: 50.0),
+              //const SizedBox(height: 50.0),
               CustomField(
                   choosedIcon: FontAwesomeIcons.idBadge,
-                  labelText: 'CREFITO',
-                  controller: crefitoController,
+                  labelText: 'Email',
+                  controller: emailController,
                   obscureText: false,
                   enableSuggestions: true,
                   autocorrect: true,
@@ -66,14 +83,20 @@ class HomeAppScreen extends StatelessWidget {
                   autocorrect: false,
                   keyboardType: TextInputType.text),
               const SizedBox(
-                height: 20.0,
+                height: 40.0,
               ),
               CustomButton(
-                onTap: () {},
+                onTap: loginUser,
                 text: 'Entrar',
               ),
               CustomButton(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SignUpScreen()),
+                  );
+                },
                 text: 'Cadastrar',
               ),
               CustomTransparentButton(

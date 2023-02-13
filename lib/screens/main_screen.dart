@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tcc_fisio_app/screens/buscar_paciente_screen.dart';
+import 'package:tcc_fisio_app/screens/new_pacient_screen.dart';
 import 'package:tcc_fisio_app/services/firebase_auth_methods.dart';
 import 'package:tcc_fisio_app/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +15,28 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = context.read<FirebaseAuthMethods>().user;
-    final fullName = user.displayName!.split(' ');
+
+    Future<Map<String, dynamic>?> fetchData() async {
+      // Create a reference to a Firestore document
+      DocumentReference docRef =
+          FirebaseFirestore.instance.collection('users').doc(user.uid);
+
+      // Fetch the document data
+      DocumentSnapshot snapshot = await docRef.get();
+
+      // Return the data as a Map<String, dynamic> or null if it doesn't exist
+      return snapshot.data() as Map<String, dynamic>?;
+    }
+
+// Use the fetchData() function in your code
+    Future<Map<String, dynamic>?> getData() async {
+      // Wait for the data to be fetched before using it in your function
+      Map<String, dynamic>? data = await fetchData();
+      return data;
+    }
+
+    final userData = getData();
+
     return Scaffold(
       backgroundColor: CustomColors.appBackgroudColor,
       body: SafeArea(
@@ -71,13 +95,26 @@ class MainScreen extends StatelessWidget {
                     text: 'Verify Email',
                   ),
                 const SizedBox(height: 50.0),
-                Text(
-                  'Dr(a). ${fullName.first} ${fullName.last}',
-                  style: GoogleFonts.roboto(
-                    color: Colors.white,
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold,
-                  ),
+                FutureBuilder<Map<String, dynamic>?>(
+                  future: getData(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      final userData = snapshot.data!;
+
+                      return Text(
+                        "Dr(a). ${userData['firstName']} ${userData['lastName']}",
+                        style: GoogleFonts.roboto(
+                          color: Colors.white,
+                          fontSize: 26,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      );
+                    } else if (snapshot.hasError) {
+                      return Text("Error: ${snapshot.error}");
+                    } else {
+                      return const CircularProgressIndicator();
+                    }
+                  },
                 ),
                 const SizedBox(height: 8.0),
                 Text(
@@ -101,7 +138,7 @@ class MainScreen extends StatelessWidget {
                   },
                   text: 'Delete Account',
                 ),
-                const SizedBox(height: 16.0),
+                const SizedBox(height: 50.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -114,12 +151,19 @@ class MainScreen extends StatelessWidget {
                           color: Colors.white,
                           child: InkWell(
                             splashColor: Colors.green,
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const ProfilePacientScreen()),
+                              );
+                            },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const <Widget>[
                                 Icon(FontAwesomeIcons.circleUser,
-                                    size: 70), // <-- Icon
+                                    size: 50), // <-- Icon
                                 SizedBox(height: 5),
                                 Text(
                                   "Cadastrar\nPaciente",
@@ -143,12 +187,20 @@ class MainScreen extends StatelessWidget {
                           color: Colors.white,
                           child: InkWell(
                             splashColor: Colors.green,
-                            onTap: () {},
+                            // Within the `FirstRoute` widget
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const SearchPacientScreen()),
+                              );
+                            },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const <Widget>[
                                 Icon(FontAwesomeIcons.magnifyingGlass,
-                                    size: 70), // <-- Icon
+                                    size: 50), // <-- Icon
                                 SizedBox(height: 5),
                                 Text(
                                   "Buscar\nPaciente",

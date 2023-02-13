@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:tcc_fisio_app/screens/home_app_screen.dart';
+import 'package:tcc_fisio_app/screens/main_screen.dart';
 import 'package:tcc_fisio_app/utils/showOTPDialog.dart';
 import 'package:tcc_fisio_app/utils/showSnackbar.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -9,6 +12,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 class FirebaseAuthMethods {
   final FirebaseAuth _auth;
   FirebaseAuthMethods(this._auth);
+  final _fireStore = FirebaseFirestore.instance;
 
   // FOR EVERY FUNCTION HERE
   // POP THE ROUTE USING: Navigator.of(context).pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
@@ -29,6 +33,10 @@ class FirebaseAuthMethods {
   Future<void> signUpWithEmail({
     required String email,
     required String password,
+    required String cpf,
+    required String firstName,
+    required String lastName,
+    required String crefito,
     required BuildContext context,
   }) async {
     try {
@@ -37,6 +45,18 @@ class FirebaseAuthMethods {
         password: password,
       );
       await sendEmailVerification(context);
+      _fireStore.collection('users').doc(_auth.currentUser!.uid).set({
+        'cpf': cpf,
+        'crefito': crefito,
+        'firstName': firstName,
+        'lastName': lastName,
+        //'active': false,
+        'created': Timestamp.now(),
+      });
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const MainScreen()),
+      );
     } on FirebaseAuthException catch (e) {
       // if you want to display your own custom error message
       if (e.code == 'weak-password') {

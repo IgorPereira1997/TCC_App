@@ -20,6 +20,10 @@ class _EmailPasswordSignupState extends State<EmailPasswordSignup> {
           email: emailController.text,
           password: passwordController.text,
           context: context,
+          cpf: '',
+          crefito: '',
+          firstName: '',
+          lastName: '',
         );
   }
 

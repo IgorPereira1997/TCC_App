@@ -4,10 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class CustomBackButton extends StatelessWidget {
   const CustomBackButton({
     Key? key,
-    required this.onTap,
   }) : super(key: key);
-
-  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +18,9 @@ class CustomBackButton extends StatelessWidget {
             shadowColor: Colors.transparent,
             elevation: 0.0,
           ),
-          onPressed: onTap,
+          onPressed: () {
+            Navigator.pop(context);
+          },
           child: const Icon(FontAwesomeIcons.arrowLeft),
         ),
       ),

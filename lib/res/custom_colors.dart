@@ -7,5 +7,5 @@ class CustomColors {
   static const Color firebaseYellow = Color(0xFFFFCA28);
   static const Color firebaseGrey = Color(0xFFECEFF1);
   static const Color googleBackground = Color(0xFF4285F4);
-  static const Color appBackgroudColor = Color(0xFF0089A6);
+  static const Color appBackgroudColor = Color(0xFF0C2365);
 }

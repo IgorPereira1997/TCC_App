@@ -6,7 +6,7 @@ import 'package:tcc_fisio_app/screens/main_screen.dart';
 import 'package:tcc_fisio_app/screens/home_screen.dart';
 import 'package:tcc_fisio_app/screens/login_email_password_screen.dart';
 import 'package:tcc_fisio_app/screens/login_screen.dart';
-import 'package:tcc_fisio_app/screens/personal_data_pacients.dart';
+import 'package:tcc_fisio_app/screens/new_pacient_screen.dart';
 import 'package:tcc_fisio_app/screens/phone_screen.dart';
 import 'package:tcc_fisio_app/screens/profile_screen.dart';
 import 'package:tcc_fisio_app/screens/signup_email_password_screen.dart';
@@ -47,6 +47,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'TCC ITP Fisio',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
@@ -70,13 +71,14 @@ class AuthWrapper extends StatelessWidget {
     final firebaseUser = context.watch<User?>();
 
     if (firebaseUser != null) {
-      return const SearchPacientScreen();
+      //return SearchPacientScreen();
       //return const ProfilePacientScreen();
       //return const ProfileScreen();
       //return const SignUpScreen();
-      //return const MainScreen();
+      return const MainScreen();
       //return const HomeAppScreen();
     }
-    return const LoginScreen();
+    //return const LoginScreen();
+    return const HomeAppScreen();
   }
 }

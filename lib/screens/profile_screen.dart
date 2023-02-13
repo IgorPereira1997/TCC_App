@@ -28,7 +28,7 @@ class ProfileScreen extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(height: 20.0),
-                CustomBackButton(onTap: () {}),
+                const CustomBackButton(),
                 const SizedBox(height: 20.0),
                 const Text(
                   "Perfil",
