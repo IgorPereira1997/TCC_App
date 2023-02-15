@@ -55,7 +55,7 @@ class FirebaseAuthMethods {
       });
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const MainScreen()),
+        MaterialPageRoute(builder: (context) => const HomeAppScreen()),
       );
     } on FirebaseAuthException catch (e) {
       // if you want to display your own custom error message
@@ -84,6 +84,11 @@ class FirebaseAuthMethods {
         await sendEmailVerification(context);
         // restrict access to certain things using provider
         // transition to another page instead of home screen
+      } else {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const MainScreen()),
+        );
       }
     } on FirebaseAuthException catch (e) {
       showSnackBar(context, e.message!); // Displaying the error message
@@ -229,6 +234,10 @@ class FirebaseAuthMethods {
   Future<void> signOut(BuildContext context) async {
     try {
       await _auth.signOut();
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const HomeAppScreen()),
+      );
     } on FirebaseAuthException catch (e) {
       showSnackBar(context, e.message!); // Displaying the error message
     }
@@ -237,7 +246,12 @@ class FirebaseAuthMethods {
   // DELETE ACCOUNT
   Future<void> deleteAccount(BuildContext context) async {
     try {
+      _fireStore.collection('users').doc(_auth.currentUser!.uid).delete();
       await _auth.currentUser!.delete();
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const HomeAppScreen()),
+      );
     } on FirebaseAuthException catch (e) {
       showSnackBar(context, e.message!); // Displaying the error message
       // if an error of requires-recent-login is thrown, make sure to log
