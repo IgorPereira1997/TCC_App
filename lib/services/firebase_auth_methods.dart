@@ -261,12 +261,17 @@ class FirebaseAuthMethods {
   }
 
   //RESET PASSWORD
-  Future<void> sendPasswordResetEmail(String email) async {
-    final HttpsCallable callable =
-        FirebaseFunctions.instance.httpsCallable('sendPasswordResetEmail');
-    final result = await callable.call({'email': email});
-    if (result.data['error'] != null) {
-      throw result.data['error'];
+  Future<void> resetPassword(BuildContext context, String email) async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const HomeAppScreen()),
+      );
+    } on FirebaseAuthException catch (e) {
+      showSnackBar(context, e.message!); // Displaying the error message
+      // if an error of requires-recent-login is thrown, make sure to log
+      // in user again and then delete account.
     }
   }
 }
