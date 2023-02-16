@@ -73,11 +73,15 @@ class FirebaseAuthMethods {
         password: password,
       );
       if (!user.emailVerified) {
-        if (context.mounted) await sendEmailVerification(context);
+        if (context.mounted) {
+          await sendEmailVerification(context);
+        }
         // restrict access to certain things using provider
         // transition to another page instead of home screen
       } else {
-        if (context.mounted) Navigator.pushNamed(context, MainScreen.routeName);
+        if (context.mounted) {
+          Navigator.pushNamed(context, MainScreen.routeName);
+        }
       }
     } on FirebaseAuthException catch (e) {
       showSnackBar(context, e.message!); // Displaying the error message
@@ -98,9 +102,10 @@ class FirebaseAuthMethods {
   Future<void> signOut(BuildContext context) async {
     try {
       await _auth.signOut();
-      if (context.mounted) {}
-      Navigator.pushNamedAndRemoveUntil(
-          context, HomeAppScreen.routeName, (route) => false);
+      if (context.mounted) {
+        Navigator.pushNamedAndRemoveUntil(
+            context, HomeAppScreen.routeName, (route) => false);
+      }
     } on FirebaseAuthException catch (e) {
       showSnackBar(context, e.message!); // Displaying the error message
     }

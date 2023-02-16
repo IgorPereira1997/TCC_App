@@ -1,5 +1,4 @@
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:tcc_fisio_app/res/custom_colors.dart';
 import 'package:tcc_fisio_app/screens/signup_screen.dart';
 import 'package:tcc_fisio_app/services/firebase_auth_methods.dart';
@@ -92,7 +91,9 @@ class _HomeAppScreenState extends State<HomeAppScreen> {
               ),
               CustomButton(
                 onTap: () {
-                  Navigator.pushNamed(context, SignUpScreen.routeName);
+                  if (context.mounted) {
+                    Navigator.pushNamed(context, SignUpScreen.routeName);
+                  }
                 },
                 text: 'Cadastrar',
               ),

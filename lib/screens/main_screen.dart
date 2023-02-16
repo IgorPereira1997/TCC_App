@@ -151,8 +151,10 @@ class MainScreen extends StatelessWidget {
                           child: InkWell(
                             splashColor: Colors.green,
                             onTap: () {
-                              Navigator.pushNamed(
-                                  context, ProfilePacientScreen.routeName);
+                              if (context.mounted) {
+                                Navigator.pushNamed(
+                                    context, ProfilePacientScreen.routeName);
+                              }
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -184,8 +186,10 @@ class MainScreen extends StatelessWidget {
                             splashColor: Colors.green,
                             // Within the `FirstRoute` widget
                             onTap: () {
-                              Navigator.pushNamed(
-                                  context, SearchPacientScreen.routeName);
+                              if (context.mounted) {
+                                Navigator.pushNamed(
+                                    context, SearchPacientScreen.routeName);
+                              }
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
