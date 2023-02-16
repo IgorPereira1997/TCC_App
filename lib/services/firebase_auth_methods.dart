@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:tcc_fisio_app/screens/home_app_screen.dart';
 import 'package:tcc_fisio_app/screens/main_screen.dart';
@@ -256,6 +257,16 @@ class FirebaseAuthMethods {
       showSnackBar(context, e.message!); // Displaying the error message
       // if an error of requires-recent-login is thrown, make sure to log
       // in user again and then delete account.
+    }
+  }
+
+  //RESET PASSWORD
+  Future<void> sendPasswordResetEmail(String email) async {
+    final HttpsCallable callable =
+        FirebaseFunctions.instance.httpsCallable('sendPasswordResetEmail');
+    final result = await callable.call({'email': email});
+    if (result.data['error'] != null) {
+      throw result.data['error'];
     }
   }
 }
