@@ -1,14 +1,12 @@
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:tcc_fisio_app/services/firebase_auth_methods.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:tcc_fisio_app/res/custom_colors.dart';
 import 'package:tcc_fisio_app/widgets/custom_back_button.dart';
 import 'package:tcc_fisio_app/widgets/custom_button.dart';
 import 'package:tcc_fisio_app/widgets/custom_signup_field.dart';
 
 class ProfilePacientScreen extends StatelessWidget {
+  static String routeName = '/patient-profile';
   const ProfilePacientScreen({Key? key}) : super(key: key);
 
   @override
@@ -18,7 +16,9 @@ class ProfilePacientScreen extends StatelessWidget {
     TextEditingController addressController = TextEditingController();
     TextEditingController telController = TextEditingController();
     TextEditingController emergencyPersonController = TextEditingController();
-    TextEditingController allergiesController = TextEditingController();
+    TextEditingController birthDateController = TextEditingController();
+    TextEditingController civilStatusController = TextEditingController();
+    TextEditingController occupationController = TextEditingController();
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
@@ -67,7 +67,6 @@ class ProfilePacientScreen extends StatelessWidget {
                       CustomField(
                         choosedIcon: FontAwesomeIcons.userDoctor,
                         labelText: 'Nome',
-                        validator: teste,
                         controller: nameController,
                         obscureText: false,
                         enableSuggestions: true,
@@ -80,7 +79,7 @@ class ProfilePacientScreen extends StatelessWidget {
 
                       CustomField(
                         choosedIcon: FontAwesomeIcons.cakeCandles,
-                        controller: addressController,
+                        controller: birthDateController,
                         labelText: 'Data de Nascimento',
                         obscureText: false,
                         enableSuggestions: true,
@@ -133,7 +132,7 @@ class ProfilePacientScreen extends StatelessWidget {
 
                       CustomField(
                         choosedIcon: FontAwesomeIcons.rectangleList,
-                        controller: addressController,
+                        controller: civilStatusController,
                         labelText: 'Estado Civil',
                         obscureText: false,
                         enableSuggestions: true,
@@ -144,7 +143,7 @@ class ProfilePacientScreen extends StatelessWidget {
 
                       CustomField(
                         choosedIcon: FontAwesomeIcons.briefcase,
-                        controller: addressController,
+                        controller: occupationController,
                         labelText: 'Profissão/Atuação',
                         obscureText: false,
                         enableSuggestions: true,
@@ -165,12 +164,5 @@ class ProfilePacientScreen extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  String? teste(String? value) {
-    if (value!.isEmpty) {
-      print('O campo é obrigatório.');
-    }
-    return null;
   }
 }

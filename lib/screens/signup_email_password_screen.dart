@@ -8,10 +8,10 @@ class EmailPasswordSignup extends StatefulWidget {
   const EmailPasswordSignup({Key? key}) : super(key: key);
 
   @override
-  _EmailPasswordSignupState createState() => _EmailPasswordSignupState();
+  EmailPasswordSignupState createState() => EmailPasswordSignupState();
 }
 
-class _EmailPasswordSignupState extends State<EmailPasswordSignup> {
+class EmailPasswordSignupState extends State<EmailPasswordSignup> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 

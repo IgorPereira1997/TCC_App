@@ -2,16 +2,16 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tcc_fisio_app/formatters/phoneNumberFormatter.dart';
 import 'package:tcc_fisio_app/res/custom_colors.dart';
 import 'package:tcc_fisio_app/res/custom_functions.dart';
 import 'package:tcc_fisio_app/services/firebase_auth_methods.dart';
-import 'package:tcc_fisio_app/utils/showSnackbar.dart';
+import 'package:tcc_fisio_app/utils/show_snackbar.dart';
 import 'package:tcc_fisio_app/widgets/custom_back_button.dart';
 import 'package:tcc_fisio_app/widgets/custom_button.dart';
 import 'package:tcc_fisio_app/widgets/custom_signup_field.dart';
 
 class SignUpScreen extends StatefulWidget {
+  static String routeName = '/signup-physio';
   const SignUpScreen({Key? key}) : super(key: key);
 
   @override
@@ -116,6 +116,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             setState(() {
                               _firstName = value;
                             });
+                            return null;
                           },
                         ),
                         const SizedBox(height: 16.0),
@@ -137,6 +138,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             setState(() {
                               _lastName = value;
                             });
+                            return null;
                           },
                         ),
                         const SizedBox(height: 16.0),
@@ -155,6 +157,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             setState(() {
                               _cpf = value;
                             });
+                            return null;
                           },
                         ),
                         const SizedBox(height: 16.0),
@@ -173,6 +176,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             setState(() {
                               _crefito = value;
                             });
+                            return null;
                           },
                         ),
                         const SizedBox(height: 16.0),
@@ -188,6 +192,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             setState(() {
                               _email = value;
                             });
+                            return null;
                           },
                         ),
                         const SizedBox(height: 16.0),
@@ -206,6 +211,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             setState(() {
                               _phone = value;
                             });
+                            return null;
                           },
                         ),
                         const SizedBox(height: 16.0),
@@ -221,6 +227,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             setState(() {
                               _password = value;
                             });
+                            return null;
                           },
                         ),
                         const SizedBox(height: 16.0),
@@ -236,6 +243,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             setState(() {
                               _confirmPassword = value;
                             });
+                            return null;
                           },
                         ),
                         const SizedBox(
@@ -263,30 +271,46 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               showSnackBar(context, 'CPF digitado é inválido!');
                             } else if (await checkFieldValueExistsOnDB(
                                 'users', 'cpf', cpf)) {
-                              showSnackBar(context,
-                                  'CPF já está cadastrado no sistema!');
+                              if (context.mounted) {
+                                showSnackBar(context,
+                                    'CPF já está cadastrado no sistema!');
+                              }
                             } else if (!isValidCrefito(crefito)) {
-                              showSnackBar(
-                                  context, 'CREFITO digitado é inválido!');
+                              if (context.mounted) {
+                                showSnackBar(
+                                    context, 'CREFITO digitado é inválido!');
+                              }
                             } else if (await checkFieldValueExistsOnDB(
                                 'users', 'crefito', crefito)) {
-                              showSnackBar(context,
-                                  'CREFITO digitado já está cadastrado no sistema!');
+                              if (context.mounted) {
+                                showSnackBar(context,
+                                    'CREFITO digitado já está cadastrado no sistema!');
+                              }
                             } else if (!isValidEmail(email)) {
-                              showSnackBar(
-                                  context, 'Email digitado é inválido!');
+                              if (context.mounted) {
+                                showSnackBar(
+                                    context, 'Email digitado é inválido!');
+                              }
                             } else if (await isEmailRegistered(email)) {
-                              showSnackBar(
-                                  context, 'O Email já está cadastrado!');
+                              if (context.mounted) {
+                                showSnackBar(
+                                    context, 'O Email já está cadastrado!');
+                              }
                             } else if (!isValidPhone(tel)) {
-                              showSnackBar(
-                                  context, 'Telefone digitado é inválido!');
+                              if (context.mounted) {
+                                showSnackBar(
+                                    context, 'Telefone digitado é inválido!');
+                              }
                             } else if (!isValidPassword(password)) {
-                              showSnackBar(context,
-                                  'Senha digitada deve conter:\n - Entre 8 e 16 caracteres e:\n  - Uma letra maiúscula\n  - Uma letra minúscula\n  - Um número\n  - Um caractere especial');
+                              if (context.mounted) {
+                                showSnackBar(context,
+                                    'Senha digitada deve conter:\n - Entre 8 e 16 caracteres e:\n  - Uma letra maiúscula\n  - Uma letra minúscula\n  - Um número\n  - Um caractere especial');
+                              }
                             } else if (!(password == confirmPassword)) {
-                              showSnackBar(context,
-                                  'As senhas digitadas não correspondem!');
+                              if (context.mounted) {
+                                showSnackBar(context,
+                                    'As senhas digitadas não correspondem!');
+                              }
                             } else {
                               signUpUser();
                             }

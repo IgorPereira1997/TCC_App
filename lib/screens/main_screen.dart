@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 import 'package:tcc_fisio_app/res/custom_colors.dart';
 
 class MainScreen extends StatelessWidget {
+  static String routeName = '/main';
   const MainScreen({Key? key}) : super(key: key);
 
   @override
@@ -34,8 +35,6 @@ class MainScreen extends StatelessWidget {
       Map<String, dynamic>? data = await fetchData();
       return data;
     }
-
-    final userData = getData();
 
     return Scaffold(
       backgroundColor: CustomColors.appBackgroudColor,
@@ -152,12 +151,8 @@ class MainScreen extends StatelessWidget {
                           child: InkWell(
                             splashColor: Colors.green,
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const ProfilePacientScreen()),
-                              );
+                              Navigator.pushNamed(
+                                  context, ProfilePacientScreen.routeName);
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -189,12 +184,8 @@ class MainScreen extends StatelessWidget {
                             splashColor: Colors.green,
                             // Within the `FirstRoute` widget
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const SearchPacientScreen()),
-                              );
+                              Navigator.pushNamed(
+                                  context, SearchPacientScreen.routeName);
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,

@@ -1,18 +1,12 @@
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:tcc_fisio_app/constants/test_list.dart';
-import 'package:tcc_fisio_app/services/firebase_auth_methods.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:tcc_fisio_app/model/patient.dart';
 import 'package:tcc_fisio_app/res/custom_colors.dart';
-import 'package:tcc_fisio_app/widgets/custom_back_button.dart';
-import 'package:tcc_fisio_app/widgets/custom_button.dart';
 import 'package:tcc_fisio_app/widgets/custom_patient_info.dart';
-import 'package:tcc_fisio_app/widgets/custom_signup_field.dart';
 //import 'package:tcc_fisio_app/widgets/patient_info.dart';
 
 class SearchPacientScreen extends StatefulWidget {
+  static String routeName = '/search-patient';
   const SearchPacientScreen({Key? key}) : super(key: key);
 
   @override
@@ -57,11 +51,7 @@ class _SearchPacientScreenState extends State<SearchPacientScreen> {
                   final user = searchedUsers[index];
                   return Column(children: [
                     const SizedBox(height: 10),
-                    CustomPatientButton(
-                        onTap: () {
-                          print('cliked me!');
-                        },
-                        text: user.name),
+                    CustomPatientButton(onTap: () {}, text: user.name),
                   ]);
 
                   /*return ListTile(

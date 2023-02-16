@@ -96,12 +96,10 @@ Future<bool> isEmailRegistered(String email) async {
     return signInMethods.isNotEmpty;
   } on FirebaseAuthException catch (e) {
     // Handle any errors that may occur
-    print('FirebaseAuthException: ${e.code} - ${e.message}');
-    return false;
+    throw FirebaseAuthException(code: e.code, message: e.message);
   } catch (e) {
     // Handle any other errors that may occur
-    print('Error: $e');
-    return false;
+    return Future.error(e);
   }
 }
 
@@ -118,8 +116,7 @@ Future<bool> isCpfRegistered(String cpf) async {
     return querySnapshot.docs.isNotEmpty;
   } catch (e) {
     // Handle any errors that may occur
-    print('Error: $e');
-    return false;
+    return Future.error('Error: $e');
   }
 }
 
@@ -136,8 +133,7 @@ Future<bool> isCrefitoRegistered(String crefito) async {
     return querySnapshot.docs.isNotEmpty;
   } catch (e) {
     // Handle any errors that may occur
-    print('Error: $e');
-    return false;
+    return Future.error('Error: $e');
   }
 }
 

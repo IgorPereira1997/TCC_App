@@ -1,16 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:tcc_fisio_app/firebase_options.dart';
-import 'package:tcc_fisio_app/screens/buscar_paciente_screen.dart';
 import 'package:tcc_fisio_app/screens/home_app_screen.dart';
 import 'package:tcc_fisio_app/screens/main_screen.dart';
-import 'package:tcc_fisio_app/screens/home_screen.dart';
 import 'package:tcc_fisio_app/screens/login_email_password_screen.dart';
-import 'package:tcc_fisio_app/screens/login_screen.dart';
-import 'package:tcc_fisio_app/screens/new_pacient_screen.dart';
-import 'package:tcc_fisio_app/screens/phone_screen.dart';
-import 'package:tcc_fisio_app/screens/profile_screen.dart';
 import 'package:tcc_fisio_app/screens/signup_email_password_screen.dart';
-import 'package:tcc_fisio_app/screens/signup_screen.dart';
 import 'package:tcc_fisio_app/services/firebase_auth_methods.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
@@ -56,7 +49,6 @@ class MyApp extends StatelessWidget {
           EmailPasswordSignup.routeName: (context) =>
               const EmailPasswordSignup(),
           EmailPasswordLogin.routeName: (context) => const EmailPasswordLogin(),
-          PhoneScreen.routeName: (context) => const PhoneScreen(),
         },
       ),
     );
@@ -71,14 +63,8 @@ class AuthWrapper extends StatelessWidget {
     final firebaseUser = context.watch<User?>();
 
     if (firebaseUser != null) {
-      //return SearchPacientScreen();
-      //return const ProfilePacientScreen();
-      //return const ProfileScreen();
-      //return const SignUpScreen();
       return const MainScreen();
-      //return const HomeAppScreen();
     }
-    //return const LoginScreen();
     return const HomeAppScreen();
   }
 }

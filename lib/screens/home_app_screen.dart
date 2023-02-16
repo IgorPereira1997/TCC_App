@@ -10,6 +10,7 @@ import 'package:tcc_fisio_app/widgets/custom_button_transparent.dart';
 import 'package:tcc_fisio_app/widgets/custom_signup_field.dart';
 
 class HomeAppScreen extends StatefulWidget {
+  static String routeName = '/home';
   const HomeAppScreen({super.key});
 
   @override
@@ -91,11 +92,7 @@ class _HomeAppScreenState extends State<HomeAppScreen> {
               ),
               CustomButton(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const SignUpScreen()),
-                  );
+                  Navigator.pushNamed(context, SignUpScreen.routeName);
                 },
                 text: 'Cadastrar',
               ),

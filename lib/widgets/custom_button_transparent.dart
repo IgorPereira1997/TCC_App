@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tcc_fisio_app/res/custom_colors.dart';
 
 class CustomTransparentButton extends StatelessWidget {
   const CustomTransparentButton({
