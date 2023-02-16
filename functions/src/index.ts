@@ -1,6 +1,6 @@
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
-import * as serviceAccount from "./serviceAccountKey.json";
+import * as serviceAccount from "../lib/serviceAccountKey.json";
 
 admin.initializeApp({
   credential: admin.credential.cert({
