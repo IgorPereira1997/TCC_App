@@ -51,4 +51,4 @@ app.*.map.json
 /ios/Runner/Info.plist
 
 /functions/src/serviceAccountKey.json
-/functions/lib/serviceAccountKey.json
+/functions/lib/*
