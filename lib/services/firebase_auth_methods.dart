@@ -99,7 +99,7 @@ class FirebaseAuthMethods {
   Future<void> sendEmailVerification(BuildContext context) async {
     try {
       _auth.currentUser!.sendEmailVerification();
-      showSnackBar(context, 'Email verification sent!');
+      showSnackBar(context, 'Verificação de email enviada!');
     } on FirebaseAuthException catch (e) {
       showSnackBar(context, e.message!); // Display error message
     }

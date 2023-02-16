@@ -46,6 +46,7 @@ dependencies:
   font_awesome_flutter: ^10.3.0
   google_fonts: ^4.0.3
   cloud_firestore: ^4.3.2
+  cloud_functions: ^4.0.8
 
 dev_dependencies:
   flutter_test:

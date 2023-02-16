@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tcc_fisio_app/formatters/phoneNumberFormatter.dart';
 import 'package:tcc_fisio_app/res/custom_colors.dart';
+import 'package:tcc_fisio_app/res/custom_functions.dart';
 import 'package:tcc_fisio_app/services/firebase_auth_methods.dart';
+import 'package:tcc_fisio_app/utils/showSnackbar.dart';
 import 'package:tcc_fisio_app/widgets/custom_back_button.dart';
+import 'package:tcc_fisio_app/widgets/custom_button.dart';
 import 'package:tcc_fisio_app/widgets/custom_signup_field.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -17,6 +20,7 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
+
   String _firstName = '';
   String _lastName = '';
   String _cpf = '';
@@ -84,6 +88,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 const SizedBox(height: 70.0),
                 Form(
+                  key: _formKey,
                   child: Padding(
                     padding: const EdgeInsets.only(
                       left: 16.0,
@@ -93,20 +98,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        /*CustomButton(
-                          onTap: () {
-                            context.read<FirebaseAuthMethods>().signOut(context);
-                          },
-                          text: 'Sign Out',
-                        ),
-                        CustomButton(
-                          onTap: () {
-                            context
-                                .read<FirebaseAuthMethods>()
-                                .deleteAccount(context);
-                          },
-                          text: 'Delete Account',
-                        ),*/
                         CustomField(
                           choosedIcon: FontAwesomeIcons.userDoctor,
                           labelText: 'Nome',
@@ -158,16 +149,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           autocorrect: true,
                           keyboardType: TextInputType.number,
                           inputFormatters: [
-                            //FilteringTextInputFormatter.digitsOnly,
                             LengthLimitingTextInputFormatter(11),
-                            //PhoneFormatter(),
                           ],
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Por favor, preencha o seu CPF';
-                            }
-                            return null;
-                          },
                           onChanged: (value) {
                             setState(() {
                               _cpf = value;
@@ -184,16 +167,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           autocorrect: true,
                           keyboardType: TextInputType.text,
                           inputFormatters: [
-                            //FilteringTextInputFormatter.digitsOnly,
-                            LengthLimitingTextInputFormatter(9),
-                            //PhoneFormatter(),
+                            LengthLimitingTextInputFormatter(12),
                           ],
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Por favor, preencha o seu CREFITO';
-                            }
-                            return null;
-                          },
                           onChanged: (value) {
                             setState(() {
                               _crefito = value;
@@ -209,14 +184,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           enableSuggestions: true,
                           autocorrect: true,
                           keyboardType: TextInputType.text,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Por favor, preencha o seu email';
-                            } else if (!value.contains('@')) {
-                              return 'Por favor, insira um email válido';
-                            }
-                            return null;
-                          },
                           onChanged: (value) {
                             setState(() {
                               _email = value;
@@ -232,16 +199,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           enableSuggestions: true,
                           autocorrect: true,
                           keyboardType: TextInputType.phone,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Por favor, preencha o seu telefone';
-                            }
-                            return null;
-                          },
                           inputFormatters: [
-                            //FilteringTextInputFormatter.digitsOnly,
                             LengthLimitingTextInputFormatter(11),
-                            //PhoneFormatter(),
                           ],
                           onChanged: (value) {
                             setState(() {
@@ -258,12 +217,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           enableSuggestions: false,
                           autocorrect: false,
                           keyboardType: TextInputType.text,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Por favor, preencha o campo senha!';
-                            }
-                            return null;
-                          },
                           onChanged: (value) {
                             setState(() {
                               _password = value;
@@ -284,29 +237,61 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               _confirmPassword = value;
                             });
                           },
-                          validator: (value) => value != password
-                              ? 'As senhas não correspondem!'
-                              : null,
                         ),
                         const SizedBox(
                           height: 20.0,
                         ),
-                        ElevatedButton(
-                          onPressed: signUpUser,
-                          style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all(Colors.blue),
-                            textStyle: MaterialStateProperty.all(
-                              const TextStyle(color: Colors.white),
-                            ),
-                            minimumSize: MaterialStateProperty.all(
-                              Size(MediaQuery.of(context).size.width / 2.5, 50),
-                            ),
-                          ),
-                          child: const Text(
-                            "Sign Up",
-                            style: TextStyle(color: Colors.white, fontSize: 16),
-                          ),
+                        CustomButton(
+                          onTap: () async {
+                            if (firstName.isEmpty ||
+                                lastName.isEmpty ||
+                                cpf.isEmpty ||
+                                crefito.isEmpty ||
+                                email.isEmpty ||
+                                tel.isEmpty ||
+                                password.isEmpty ||
+                                confirmPassword.isEmpty) {
+                              showSnackBar(context,
+                                  'Há campos em branco. Preencha-os e tente novamente.');
+                            } else if (!isValidName(firstName)) {
+                              showSnackBar(
+                                  context, 'Nome digitado é inválido!');
+                            } else if (!isValidName(lastName)) {
+                              showSnackBar(
+                                  context, 'Sobrenome digitado é inválido!');
+                            } else if (!isValidCpfCnpj(cpf)) {
+                              showSnackBar(context, 'CPF digitado é inválido!');
+                            } else if (await checkFieldValueExistsOnDB(
+                                'users', 'cpf', cpf)) {
+                              showSnackBar(context,
+                                  'CPF já está cadastrado no sistema!');
+                            } else if (!isValidCrefito(crefito)) {
+                              showSnackBar(
+                                  context, 'CREFITO digitado é inválido!');
+                            } else if (await checkFieldValueExistsOnDB(
+                                'users', 'crefito', crefito)) {
+                              showSnackBar(context,
+                                  'CREFITO digitado já está cadastrado no sistema!');
+                            } else if (!isValidEmail(email)) {
+                              showSnackBar(
+                                  context, 'Email digitado é inválido!');
+                            } else if (await isEmailRegistered(email)) {
+                              showSnackBar(
+                                  context, 'O Email já está cadastrado!');
+                            } else if (!isValidPhone(tel)) {
+                              showSnackBar(
+                                  context, 'Telefone digitado é inválido!');
+                            } else if (!isValidPassword(password)) {
+                              showSnackBar(context,
+                                  'Senha digitada deve conter:\n - Entre 8 e 16 caracteres e:\n  - Uma letra maiúscula\n  - Uma letra minúscula\n  - Um número\n  - Um caractere especial');
+                            } else if (!(password == confirmPassword)) {
+                              showSnackBar(context,
+                                  'As senhas digitadas não correspondem!');
+                            } else {
+                              signUpUser();
+                            }
+                          },
+                          text: 'Cadastrar',
                         ),
                       ],
                     ),
@@ -324,7 +309,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   String get lastName => _lastNameController.text;
 
-  String get cpf => _cpfController.text;
+  String get cpf => cleanCPF(_cpfController.text);
 
   String get crefito => _crefitoController.text;
 
