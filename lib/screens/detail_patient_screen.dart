@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 class FiveDropDowns extends StatefulWidget {
+  const FiveDropDowns({super.key});
+
   @override
-  _FiveDropDownsState createState() => _FiveDropDownsState();
+  FiveDropDownsState createState() => FiveDropDownsState();
 }
 
-class _FiveDropDownsState extends State<FiveDropDowns> {
-  List<String> _dropdownItems = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
+class FiveDropDownsState extends State<FiveDropDowns> {
+  List<String> dropdownItems = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
   String? _selectedItem1;
   String? _selectedItem2;
   String? _selectedItem3;
@@ -25,15 +27,15 @@ class _FiveDropDownsState extends State<FiveDropDowns> {
               children: [
                 DropdownButton<String>(
                   value: _selectedItem1,
-                  items: _dropdownItems
+                  items: dropdownItems
                       .map(
                         (value) => DropdownMenuItem(
-                          child: Text(value),
                           value: value,
+                          child: Text(value),
                         ),
                       )
                       .toList(),
-                  hint: Text('Select an item'),
+                  hint: const Text('Select an item'),
                   onChanged: (value) {
                     setState(() {
                       _selectedItem1 = value;
@@ -44,18 +46,18 @@ class _FiveDropDownsState extends State<FiveDropDowns> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(width: 16),
+                      const SizedBox(width: 16),
                       DropdownButton<String>(
                         value: _selectedItem2,
-                        items: _dropdownItems
+                        items: dropdownItems
                             .map(
                               (value) => DropdownMenuItem(
-                                child: Text(value),
                                 value: value,
+                                child: Text(value),
                               ),
                             )
                             .toList(),
-                        hint: Text('Select an item'),
+                        hint: const Text('Select an item'),
                         onChanged: (value) {
                           setState(() {
                             _selectedItem2 = value;
@@ -66,18 +68,18 @@ class _FiveDropDownsState extends State<FiveDropDowns> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(width: 32),
+                            const SizedBox(width: 32),
                             DropdownButton<String>(
                               value: _selectedItem3,
-                              items: _dropdownItems
+                              items: dropdownItems
                                   .map(
                                     (value) => DropdownMenuItem(
-                                      child: Text(value),
                                       value: value,
+                                      child: Text(value),
                                     ),
                                   )
                                   .toList(),
-                              hint: Text('Select an item'),
+                              hint: const Text('Select an item'),
                               onChanged: (value) {
                                 setState(() {
                                   _selectedItem3 = value;
@@ -89,18 +91,18 @@ class _FiveDropDownsState extends State<FiveDropDowns> {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  SizedBox(width: 48),
+                                  const SizedBox(width: 48),
                                   DropdownButton<String>(
                                     value: _selectedItem4,
-                                    items: _dropdownItems
+                                    items: dropdownItems
                                         .map(
                                           (value) => DropdownMenuItem(
-                                            child: Text(value),
                                             value: value,
+                                            child: Text(value),
                                           ),
                                         )
                                         .toList(),
-                                    hint: Text('Select an item'),
+                                    hint: const Text('Select an item'),
                                     onChanged: (value) {
                                       setState(() {
                                         _selectedItem4 = value;
@@ -118,15 +120,15 @@ class _FiveDropDownsState extends State<FiveDropDowns> {
             // Remaining dropdown menus
             DropdownButton<String>(
               value: _selectedItem5,
-              items: _dropdownItems
+              items: dropdownItems
                   .map(
                     (value) => DropdownMenuItem(
-                      child: Text(value),
                       value: value,
+                      child: Text(value),
                     ),
                   )
                   .toList(),
-              hint: Text('Select an item'),
+              hint: const Text('Select an item'),
               onChanged: (value) {
                 setState(() {
                   _selectedItem5 = value;

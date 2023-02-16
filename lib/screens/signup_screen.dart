@@ -21,14 +21,14 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
 
-  String _firstName = '';
-  String _lastName = '';
-  String _cpf = '';
-  String _crefito = '';
-  String _email = '';
-  String _phone = '';
-  String _password = '';
-  String _confirmPassword = '';
+  String _firstName = ''; // ignore: unused_field
+  String _lastName = ''; // ignore: unused_field
+  String _cpf = ''; // ignore: unused_field
+  String _crefito = ''; // ignore: unused_field
+  String _email = ''; // ignore: unused_field
+  String _phone = ''; // ignore: unused_field
+  String _password = ''; // ignore: unused_field
+  String _confirmPassword = ''; // ignore: unused_field
 
   final _firstNameController = TextEditingController();
   final _lastNameController = TextEditingController();
