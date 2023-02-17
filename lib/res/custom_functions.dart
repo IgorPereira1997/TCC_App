@@ -20,6 +20,23 @@ Future<bool> checkFieldValueExistsOnDB(
   return false;
 }
 
+Future<bool> checkIfUserExistsOnDB(
+    collection, firstName, lastName, cpf, email) async {
+  final HttpsCallable checkUserExistsCallable =
+      FirebaseFunctions.instance.httpsCallable('checkUserExists');
+  final result = await checkUserExistsCallable.call({
+    'collectionPath': collection,
+    'cpf': cpf,
+    'email': email,
+    'firstName': firstName,
+    'lastName': lastName
+  });
+
+  final userExists = result.data;
+
+  return userExists;
+}
+
 bool isValidCpfCnpj(String value) {
   // Remove any non-digit characters from the input
   value = value.replaceAll(RegExp(r'[^0-9]'), '');

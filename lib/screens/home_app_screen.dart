@@ -1,5 +1,6 @@
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tcc_fisio_app/res/custom_colors.dart';
+import 'package:tcc_fisio_app/screens/reset_password_screen.dart';
 import 'package:tcc_fisio_app/screens/signup_screen.dart';
 import 'package:tcc_fisio_app/services/firebase_auth_methods.dart';
 import 'package:tcc_fisio_app/widgets/custom_button.dart';
@@ -98,7 +99,11 @@ class _HomeAppScreenState extends State<HomeAppScreen> {
                 text: 'Cadastrar',
               ),
               CustomTransparentButton(
-                onTap: () {},
+                onTap: () {
+                  if (context.mounted) {
+                    Navigator.pushNamed(context, ResetPasswordScreen.routeName);
+                  }
+                },
                 text: 'Esqueceu sua senha?',
               )
             ],

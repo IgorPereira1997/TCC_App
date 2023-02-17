@@ -12,7 +12,7 @@ admin.initializeApp({
 });
 
 export const checkFieldValueExists = functions.https.onCall(
-  async (data, context) => {
+  async (data) => {
     const {collectionPath, fieldName, value} = data;
 
     try {
@@ -34,6 +34,38 @@ export const checkFieldValueExists = functions.https.onCall(
       throw new functions.https.HttpsError(
         "internal",
         "An error occurred while checking field value.");
+    }
+  }
+);
+
+export const checkUserExists = functions.https.onCall(
+  async (data) => {
+    const {collectionPath, cpf, firstName, lastName, email} = data;
+
+    try {
+      // Query the collection for documents where the email, cpf, firstName,
+      // and lastName fields all match the specified values
+      const querySnapshot = await admin.firestore()
+        .collection(collectionPath)
+        .where("cpf", "==", cpf)
+        .where("firstName", "==", firstName)
+        .where("lastName", "==", lastName)
+        .get();
+      // If any documents are returned,
+      // the values all belong to the same user uid
+      if (!querySnapshot.empty) {
+        const uid = querySnapshot.docs[0].id;
+        const user = await admin.auth().getUserByEmail(email);
+        if (uid === user.uid) {
+          return true;
+        }
+      }
+      return false;
+    } catch (error) {
+      console.error("Error checking email: ", error);
+      throw new functions.https.HttpsError(
+        "internal",
+        "An error occurred while checking user.");
     }
   }
 );

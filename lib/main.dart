@@ -4,6 +4,7 @@ import 'package:tcc_fisio_app/screens/buscar_paciente_screen.dart';
 import 'package:tcc_fisio_app/screens/home_app_screen.dart';
 import 'package:tcc_fisio_app/screens/main_screen.dart';
 import 'package:tcc_fisio_app/screens/new_pacient_screen.dart';
+import 'package:tcc_fisio_app/screens/reset_password_screen.dart';
 import 'package:tcc_fisio_app/screens/signup_screen.dart';
 import 'package:tcc_fisio_app/services/firebase_auth_methods.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -54,6 +55,8 @@ class MyApp extends StatelessWidget {
               const SearchPacientScreen(),
           ProfilePacientScreen.routeName: (context) =>
               const ProfilePacientScreen(),
+          ResetPasswordScreen.routeName: (context) =>
+              const ResetPasswordScreen(),
         },
       ),
     );

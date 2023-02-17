@@ -128,12 +128,18 @@ class FirebaseAuthMethods {
   }
 
   //RESET PASSWORD
-  Future<void> resetPassword(BuildContext context, String email) async {
+  Future<void> resetPassword(
+    BuildContext context,
+    String email,
+  ) async {
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
       if (context.mounted) {
         Navigator.pushNamedAndRemoveUntil(
             context, HomeAppScreen.routeName, (route) => false);
+
+        showSnackBar(
+            context, 'Foi enviado um email para recuperação da senha.');
       }
     } on FirebaseAuthException catch (e) {
       showSnackBar(context, e.message!); // Displaying the error message
