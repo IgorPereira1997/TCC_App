@@ -56,14 +56,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     void signUpUser() async {
       context.read<FirebaseAuthMethods>().signUpWithEmail(
-            email: email,
-            password: password,
-            context: context,
-            cpf: cpf,
-            crefito: crefito,
-            firstName: firstName,
-            lastName: lastName,
-          );
+          email: email,
+          password: password,
+          context: context,
+          cpf: cpf,
+          crefito: crefito,
+          firstName: firstName,
+          lastName: lastName,
+          phone: tel);
     }
 
     return GestureDetector(
@@ -71,257 +71,250 @@ class _SignUpScreenState extends State<SignUpScreen> {
         resizeToAvoidBottomInset: false,
         backgroundColor: CustomColors.appBackgroudColor,
         body: SafeArea(
-          child: SingleChildScrollView(
-            reverse: true,
-            child: Column(
-              children: [
-                const SizedBox(height: 20.0),
-                const CustomBackButton(),
-                const SizedBox(height: 20.0),
-                const Text(
-                  "Cadastro",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: 30,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 70.0),
-                Form(
-                  key: _formKey,
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      left: 16.0,
-                      right: 16.0,
-                      bottom: 20.0,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CustomField(
-                          choosedIcon: FontAwesomeIcons.userDoctor,
-                          labelText: 'Nome',
-                          controller: _firstNameController,
-                          obscureText: false,
-                          enableSuggestions: true,
-                          autocorrect: true,
-                          keyboardType: TextInputType.text,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Por favor, preencha o seu nome';
-                            }
-                            return null;
-                          },
-                          onChanged: (value) {
-                            setState(() {
-                              _firstName = value;
-                            });
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 16.0),
-                        CustomField(
-                          choosedIcon: FontAwesomeIcons.userDoctor,
-                          labelText: 'Sobrenome',
-                          controller: _lastNameController,
-                          obscureText: false,
-                          enableSuggestions: true,
-                          autocorrect: true,
-                          keyboardType: TextInputType.text,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Por favor, preencha o seu sobrenome';
-                            }
-                            return null;
-                          },
-                          onChanged: (value) {
-                            setState(() {
-                              _lastName = value;
-                            });
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 16.0),
-                        CustomField(
-                          choosedIcon: FontAwesomeIcons.book,
-                          labelText: 'CPF',
-                          controller: _cpfController,
-                          obscureText: false,
-                          enableSuggestions: true,
-                          autocorrect: true,
-                          keyboardType: TextInputType.number,
-                          inputFormatters: [
-                            LengthLimitingTextInputFormatter(11),
-                          ],
-                          onChanged: (value) {
-                            setState(() {
-                              _cpf = value;
-                            });
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 16.0),
-                        CustomField(
-                          choosedIcon: FontAwesomeIcons.idBadge,
-                          controller: _crefitoController,
-                          labelText: 'CREFITO',
-                          obscureText: false,
-                          enableSuggestions: true,
-                          autocorrect: true,
-                          keyboardType: TextInputType.text,
-                          inputFormatters: [
-                            LengthLimitingTextInputFormatter(12),
-                          ],
-                          onChanged: (value) {
-                            setState(() {
-                              _crefito = value;
-                            });
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 16.0),
-                        CustomField(
-                          choosedIcon: FontAwesomeIcons.envelope,
-                          controller: _emailController,
-                          labelText: 'Email',
-                          obscureText: false,
-                          enableSuggestions: true,
-                          autocorrect: true,
-                          keyboardType: TextInputType.text,
-                          onChanged: (value) {
-                            setState(() {
-                              _email = value;
-                            });
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 16.0),
-                        CustomField(
-                          choosedIcon: FontAwesomeIcons.phone,
-                          controller: _telController,
-                          labelText: 'Telefone',
-                          obscureText: false,
-                          enableSuggestions: true,
-                          autocorrect: true,
-                          keyboardType: TextInputType.phone,
-                          inputFormatters: [
-                            LengthLimitingTextInputFormatter(11),
-                          ],
-                          onChanged: (value) {
-                            setState(() {
-                              _phone = value;
-                            });
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 16.0),
-                        CustomField(
-                          choosedIcon: FontAwesomeIcons.key,
-                          controller: _passwordController,
-                          labelText: 'Senha',
-                          obscureText: true,
-                          enableSuggestions: false,
-                          autocorrect: false,
-                          keyboardType: TextInputType.text,
-                          onChanged: (value) {
-                            setState(() {
-                              _password = value;
-                            });
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 16.0),
-                        CustomField(
-                          choosedIcon: FontAwesomeIcons.key,
-                          controller: _confirmPasswordController,
-                          labelText: 'Confirmar Senha',
-                          obscureText: true,
-                          enableSuggestions: false,
-                          autocorrect: false,
-                          keyboardType: TextInputType.text,
-                          onChanged: (value) {
-                            setState(() {
-                              _confirmPassword = value;
-                            });
-                            return null;
-                          },
-                        ),
-                        const SizedBox(
-                          height: 20.0,
-                        ),
-                        CustomButton(
-                          onTap: () async {
-                            if (firstName.isEmpty ||
-                                lastName.isEmpty ||
-                                cpf.isEmpty ||
-                                crefito.isEmpty ||
-                                email.isEmpty ||
-                                tel.isEmpty ||
-                                password.isEmpty ||
-                                confirmPassword.isEmpty) {
-                              showSnackBar(context,
-                                  'Há campos em branco. Preencha-os e tente novamente.');
-                            } else if (!isValidName(firstName)) {
-                              showSnackBar(
-                                  context, 'Nome digitado é inválido!');
-                            } else if (!isValidName(lastName)) {
-                              showSnackBar(
-                                  context, 'Sobrenome digitado é inválido!');
-                            } else if (!isValidCpfCnpj(cpf)) {
-                              showSnackBar(context, 'CPF digitado é inválido!');
-                            } else if (await checkFieldValueExistsOnDB(
-                                'users', 'cpf', cpf)) {
-                              if (context.mounted) {
+          child: Padding(
+            padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom),
+            child: SingleChildScrollView(
+              reverse: true,
+              child: Column(
+                children: [
+                  const SizedBox(height: 20.0),
+                  const CustomBackButton(),
+                  const SizedBox(height: 20.0),
+                  const Text(
+                    "Cadastro",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 30,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 70.0),
+                  Form(
+                    key: _formKey,
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        left: 16.0,
+                        right: 16.0,
+                        bottom: 20.0,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CustomField(
+                            choosedIcon: FontAwesomeIcons.userDoctor,
+                            labelText: 'Nome',
+                            controller: _firstNameController,
+                            obscureText: false,
+                            enableSuggestions: true,
+                            autocorrect: true,
+                            keyboardType: TextInputType.text,
+                            onChanged: (value) {
+                              setState(() {
+                                _firstName = value;
+                              });
+                              return null;
+                            },
+                          ),
+                          const SizedBox(height: 16.0),
+                          CustomField(
+                            choosedIcon: FontAwesomeIcons.userDoctor,
+                            labelText: 'Sobrenome',
+                            controller: _lastNameController,
+                            obscureText: false,
+                            enableSuggestions: true,
+                            autocorrect: true,
+                            keyboardType: TextInputType.text,
+                            onChanged: (value) {
+                              setState(() {
+                                _lastName = value;
+                              });
+                              return null;
+                            },
+                          ),
+                          const SizedBox(height: 16.0),
+                          CustomField(
+                            choosedIcon: FontAwesomeIcons.book,
+                            labelText: 'CPF',
+                            controller: _cpfController,
+                            obscureText: false,
+                            enableSuggestions: true,
+                            autocorrect: true,
+                            keyboardType: TextInputType.number,
+                            inputFormatters: [
+                              LengthLimitingTextInputFormatter(11),
+                            ],
+                            onChanged: (value) {
+                              setState(() {
+                                _cpf = value;
+                              });
+                              return null;
+                            },
+                          ),
+                          const SizedBox(height: 16.0),
+                          CustomField(
+                            choosedIcon: FontAwesomeIcons.idBadge,
+                            controller: _crefitoController,
+                            labelText: 'CREFITO',
+                            obscureText: false,
+                            enableSuggestions: true,
+                            autocorrect: true,
+                            keyboardType: TextInputType.text,
+                            inputFormatters: [
+                              LengthLimitingTextInputFormatter(12),
+                            ],
+                            onChanged: (value) {
+                              setState(() {
+                                _crefito = value;
+                              });
+                              return null;
+                            },
+                          ),
+                          const SizedBox(height: 16.0),
+                          CustomField(
+                            choosedIcon: FontAwesomeIcons.envelope,
+                            controller: _emailController,
+                            labelText: 'Email',
+                            obscureText: false,
+                            enableSuggestions: true,
+                            autocorrect: true,
+                            keyboardType: TextInputType.text,
+                            onChanged: (value) {
+                              setState(() {
+                                _email = value;
+                              });
+                              return null;
+                            },
+                          ),
+                          const SizedBox(height: 16.0),
+                          CustomField(
+                            choosedIcon: FontAwesomeIcons.phone,
+                            controller: _telController,
+                            labelText: 'Telefone',
+                            obscureText: false,
+                            enableSuggestions: true,
+                            autocorrect: true,
+                            keyboardType: TextInputType.phone,
+                            inputFormatters: [
+                              LengthLimitingTextInputFormatter(11),
+                            ],
+                            onChanged: (value) {
+                              setState(() {
+                                _phone = value;
+                              });
+                              return null;
+                            },
+                          ),
+                          const SizedBox(height: 16.0),
+                          CustomField(
+                            choosedIcon: FontAwesomeIcons.key,
+                            controller: _passwordController,
+                            labelText: 'Senha',
+                            obscureText: true,
+                            enableSuggestions: false,
+                            autocorrect: false,
+                            keyboardType: TextInputType.text,
+                            onChanged: (value) {
+                              setState(() {
+                                _password = value;
+                              });
+                              return null;
+                            },
+                          ),
+                          const SizedBox(height: 16.0),
+                          CustomField(
+                            choosedIcon: FontAwesomeIcons.key,
+                            controller: _confirmPasswordController,
+                            labelText: 'Confirmar Senha',
+                            obscureText: true,
+                            enableSuggestions: false,
+                            autocorrect: false,
+                            keyboardType: TextInputType.text,
+                            onChanged: (value) {
+                              setState(() {
+                                _confirmPassword = value;
+                              });
+                              return null;
+                            },
+                          ),
+                          const SizedBox(
+                            height: 20.0,
+                          ),
+                          CustomButton(
+                            onTap: () async {
+                              if (firstName.isEmpty ||
+                                  lastName.isEmpty ||
+                                  cpf.isEmpty ||
+                                  crefito.isEmpty ||
+                                  email.isEmpty ||
+                                  tel.isEmpty ||
+                                  password.isEmpty ||
+                                  confirmPassword.isEmpty) {
                                 showSnackBar(context,
-                                    'CPF já está cadastrado no sistema!');
-                              }
-                            } else if (!isValidCrefito(crefito)) {
-                              if (context.mounted) {
+                                    'Há campos em branco. Preencha-os e tente novamente.');
+                              } else if (!isValidName(firstName)) {
                                 showSnackBar(
-                                    context, 'CREFITO digitado é inválido!');
-                              }
-                            } else if (await checkFieldValueExistsOnDB(
-                                'users', 'crefito', crefito)) {
-                              if (context.mounted) {
-                                showSnackBar(context,
-                                    'CREFITO digitado já está cadastrado no sistema!');
-                              }
-                            } else if (!isValidEmail(email)) {
-                              if (context.mounted) {
+                                    context, 'Nome digitado é inválido!');
+                              } else if (!isValidName(lastName)) {
                                 showSnackBar(
-                                    context, 'Email digitado é inválido!');
-                              }
-                            } else if (await isEmailRegistered(email)) {
-                              if (context.mounted) {
+                                    context, 'Sobrenome digitado é inválido!');
+                              } else if (!isValidCpfCnpj(cpf)) {
                                 showSnackBar(
-                                    context, 'O Email já está cadastrado!');
+                                    context, 'CPF digitado é inválido!');
+                              } else if (await checkFieldValueExistsOnDB(
+                                  'users', 'cpf', cpf)) {
+                                if (context.mounted) {
+                                  showSnackBar(context,
+                                      'CPF já está cadastrado no sistema!');
+                                }
+                              } else if (!isValidCrefito(crefito)) {
+                                if (context.mounted) {
+                                  showSnackBar(
+                                      context, 'CREFITO digitado é inválido!');
+                                }
+                              } else if (await checkFieldValueExistsOnDB(
+                                  'users', 'crefito', crefito)) {
+                                if (context.mounted) {
+                                  showSnackBar(context,
+                                      'CREFITO digitado já está cadastrado no sistema!');
+                                }
+                              } else if (!isValidEmail(email)) {
+                                if (context.mounted) {
+                                  showSnackBar(
+                                      context, 'Email digitado é inválido!');
+                                }
+                              } else if (await isEmailRegistered(email)) {
+                                if (context.mounted) {
+                                  showSnackBar(
+                                      context, 'O Email já está cadastrado!');
+                                }
+                              } else if (!isValidPhone(tel)) {
+                                if (context.mounted) {
+                                  showSnackBar(
+                                      context, 'Telefone digitado é inválido!');
+                                }
+                              } else if (!isValidPassword(password)) {
+                                if (context.mounted) {
+                                  showSnackBar(context,
+                                      'Senha digitada deve conter:\n - Entre 8 e 16 caracteres e:\n  - Uma letra maiúscula\n  - Uma letra minúscula\n  - Um número\n  - Um caractere especial');
+                                }
+                              } else if (!(password == confirmPassword)) {
+                                if (context.mounted) {
+                                  showSnackBar(context,
+                                      'As senhas digitadas não correspondem!');
+                                }
+                              } else {
+                                signUpUser();
                               }
-                            } else if (!isValidPhone(tel)) {
-                              if (context.mounted) {
-                                showSnackBar(
-                                    context, 'Telefone digitado é inválido!');
-                              }
-                            } else if (!isValidPassword(password)) {
-                              if (context.mounted) {
-                                showSnackBar(context,
-                                    'Senha digitada deve conter:\n - Entre 8 e 16 caracteres e:\n  - Uma letra maiúscula\n  - Uma letra minúscula\n  - Um número\n  - Um caractere especial');
-                              }
-                            } else if (!(password == confirmPassword)) {
-                              if (context.mounted) {
-                                showSnackBar(context,
-                                    'As senhas digitadas não correspondem!');
-                              }
-                            } else {
-                              signUpUser();
-                            }
-                          },
-                          text: 'Cadastrar',
-                        ),
-                      ],
+                            },
+                            text: 'Cadastrar',
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

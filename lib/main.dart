@@ -1,9 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:tcc_fisio_app/firebase_options.dart';
 import 'package:tcc_fisio_app/screens/buscar_paciente_screen.dart';
+import 'package:tcc_fisio_app/screens/change_email.dart';
 import 'package:tcc_fisio_app/screens/home_app_screen.dart';
 import 'package:tcc_fisio_app/screens/main_screen.dart';
 import 'package:tcc_fisio_app/screens/new_pacient_screen.dart';
+import 'package:tcc_fisio_app/screens/physio_profile_screen.dart';
 import 'package:tcc_fisio_app/screens/reset_password_screen.dart';
 import 'package:tcc_fisio_app/screens/signup_screen.dart';
 import 'package:tcc_fisio_app/services/firebase_auth_methods.dart';
@@ -57,6 +59,10 @@ class MyApp extends StatelessWidget {
               const ProfilePacientScreen(),
           ResetPasswordScreen.routeName: (context) =>
               const ResetPasswordScreen(),
+          PhysioProfileScreen.routeName: (context) =>
+              const PhysioProfileScreen(),
+          PhysioChangeEmailScreen.routeName: (context) =>
+              const PhysioChangeEmailScreen(),
         },
       ),
     );

@@ -7,7 +7,7 @@ class CustomField extends StatefulWidget {
     required this.choosedIcon,
     //required this.hintText,
     required this.labelText,
-    required this.controller,
+    this.controller,
     this.validator,
     required this.obscureText,
     required this.enableSuggestions,
@@ -16,6 +16,10 @@ class CustomField extends StatefulWidget {
     this.onSaved,
     this.onChanged,
     this.inputFormatters,
+    this.initialValue,
+    this.readOnly,
+    this.onTap,
+    this.autoValidate,
   }) : super(key: key);
 
   final IconData? choosedIcon;
@@ -24,10 +28,14 @@ class CustomField extends StatefulWidget {
   final String? Function(String?)? validator;
   final String? Function(String?)? onSaved;
   final String? Function(String)? onChanged;
-  final TextEditingController controller;
+  final Function()? onTap;
+  final String? initialValue;
+  final TextEditingController? controller;
   final bool obscureText;
   final bool enableSuggestions;
   final bool autocorrect;
+  final bool? readOnly;
+  final AutovalidateMode? autoValidate;
   final TextInputType keyboardType;
   final List<TextInputFormatter>? inputFormatters;
 
@@ -37,39 +45,41 @@ class CustomField extends StatefulWidget {
 
 class _CustomFieldState extends State<CustomField> {
   @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      height: 50,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20.0),
-        child: Material(
-            color: Colors.white,
-            child: TextFormField(
-              controller: widget.controller,
-              decoration: InputDecoration(
-                prefixIcon: Padding(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: Icon(
-                    widget.choosedIcon,
-                    size: 20,
-                    color: Colors.black,
+  Widget build(BuildContext context) => SizedBox(
+        width: double.infinity,
+        height: 50,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20.0),
+          child: Material(
+              color: Colors.white,
+              child: TextFormField(
+                controller: widget.controller,
+                decoration: InputDecoration(
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Icon(
+                      widget.choosedIcon,
+                      size: 20,
+                      color: Colors.black,
+                    ),
                   ),
+                  //hintText: hintText,
+                  labelText: widget.labelText,
                 ),
-                //hintText: hintText,
-                labelText: widget.labelText,
-              ),
-              obscureText: widget.obscureText,
-              obscuringCharacter: '•',
-              enableSuggestions: widget.enableSuggestions,
-              autocorrect: widget.autocorrect,
-              keyboardType: widget.keyboardType,
-              onChanged: widget.onChanged,
-              onSaved: widget.onSaved,
-              validator: widget.validator,
-              inputFormatters: widget.inputFormatters,
-            )),
-      ),
-    );
-  }
+                obscureText: widget.obscureText,
+                obscuringCharacter: '•',
+                enableSuggestions: widget.enableSuggestions,
+                autocorrect: widget.autocorrect,
+                keyboardType: widget.keyboardType,
+                onChanged: widget.onChanged,
+                onSaved: widget.onSaved,
+                validator: widget.validator,
+                readOnly: widget.readOnly ?? false,
+                initialValue: widget.initialValue,
+                onTap: widget.onTap,
+                autovalidateMode: widget.autoValidate,
+                inputFormatters: widget.inputFormatters,
+              )),
+        ),
+      );
 }

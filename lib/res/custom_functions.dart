@@ -37,6 +37,18 @@ Future<bool> checkIfUserExistsOnDB(
   return userExists;
 }
 
+Future<Map<String, dynamic>?> fetchData(user) async {
+  // Create a reference to a Firestore document
+  DocumentReference docRef =
+      FirebaseFirestore.instance.collection('users').doc(user.uid);
+
+  // Fetch the document data
+  DocumentSnapshot snapshot = await docRef.get();
+
+  // Return the data as a Map<String, dynamic> or null if it doesn't exist
+  return snapshot.data() as Map<String, dynamic>?;
+}
+
 bool isValidCpfCnpj(String value) {
   // Remove any non-digit characters from the input
   value = value.replaceAll(RegExp(r'[^0-9]'), '');
