@@ -49,7 +49,7 @@ class _CustomFieldState extends State<CustomField> {
   @override
   Widget build(BuildContext context) => SizedBox(
         width: double.infinity,
-        height: 50,
+        height: 60,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20.0),
           child: Material(
@@ -57,6 +57,12 @@ class _CustomFieldState extends State<CustomField> {
               child: TextFormField(
                 controller: widget.controller,
                 decoration: InputDecoration(
+                  enabledBorder: const UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.transparent),
+                  ),
+                  focusedBorder: const UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.transparent),
+                  ),
                   prefixIcon: Padding(
                     padding: const EdgeInsets.only(left: 10),
                     child: Icon(

@@ -16,6 +16,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,6 +27,8 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  //await initializeDateFormatting('pt_BR', null);
   runApp(const MyApp());
 }
 
@@ -44,33 +47,44 @@ class MyApp extends StatelessWidget {
           initialData: null,
         ),
       ],
-      child: MaterialApp(
-        title: 'TCC ITP Fisio',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: const AuthWrapper(),
-        routes: {
-          HomeAppScreen.routeName: (context) => const HomeAppScreen(),
-          MainScreen.routeName: (context) => const MainScreen(),
-          SignUpScreen.routeName: (context) => const SignUpScreen(),
-          SearchPacientScreen.routeName: (context) =>
-              const SearchPacientScreen(),
-          ProfilePacientScreen.routeName: (context) =>
-              const ProfilePacientScreen(),
-          ResetPasswordScreen.routeName: (context) =>
-              const ResetPasswordScreen(),
-          PhysioProfileScreen.routeName: (context) =>
-              const PhysioProfileScreen(),
-          PhysioChangeEmailScreen.routeName: (context) =>
-              const PhysioChangeEmailScreen(),
-          PhysioChangePasswordScreen.routeName: (context) =>
-              const PhysioChangePasswordScreen(),
-          PhysioDeleteAccount.routeName: (context) =>
-              const PhysioDeleteAccount(),
-        },
-      ),
+      child: Builder(builder: (context) {
+        return MaterialApp(
+          title: 'TCC ITP Fisio',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: const AuthWrapper(),
+          localizationsDelegates: const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('pt', 'BR'), // Add the locale for Portuguese
+            // Add any other locales you want to support
+          ],
+          routes: {
+            HomeAppScreen.routeName: (context) => const HomeAppScreen(),
+            MainScreen.routeName: (context) => const MainScreen(),
+            SignUpScreen.routeName: (context) => const SignUpScreen(),
+            SearchPacientScreen.routeName: (context) =>
+                const SearchPacientScreen(),
+            ProfilePacientScreen.routeName: (context) =>
+                const ProfilePacientScreen(),
+            ResetPasswordScreen.routeName: (context) =>
+                const ResetPasswordScreen(),
+            PhysioProfileScreen.routeName: (context) =>
+                const PhysioProfileScreen(),
+            PhysioChangeEmailScreen.routeName: (context) =>
+                const PhysioChangeEmailScreen(),
+            PhysioChangePasswordScreen.routeName: (context) =>
+                const PhysioChangePasswordScreen(),
+            PhysioDeleteAccount.routeName: (context) =>
+                const PhysioDeleteAccount(),
+          },
+        );
+      }),
     );
   }
 }

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:tcc_fisio_app/res/custom_colors.dart';
 import 'package:tcc_fisio_app/widgets/custom_back_button.dart';
 import 'package:tcc_fisio_app/widgets/custom_button.dart';
+import 'package:tcc_fisio_app/widgets/custom_date_time_field.dart';
+import 'package:tcc_fisio_app/widgets/custom_dropdown_menu.dart';
 import 'package:tcc_fisio_app/widgets/custom_field.dart';
 
 class ProfilePacientScreen extends StatelessWidget {
@@ -50,20 +52,6 @@ class ProfilePacientScreen extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      /*CustomButton(
-                        onTap: () {
-                          context.read<FirebaseAuthMethods>().signOut(context);
-                        },
-                        text: 'Sign Out',
-                      ),
-                      CustomButton(
-                        onTap: () {
-                          context
-                              .read<FirebaseAuthMethods>()
-                              .deleteAccount(context);
-                        },
-                        text: 'Delete Account',
-                      ),*/
                       CustomField(
                         choosedIcon: FontAwesomeIcons.userDoctor,
                         labelText: 'Nome',
@@ -74,18 +62,13 @@ class ProfilePacientScreen extends StatelessWidget {
                         keyboardType: TextInputType.text,
                       ),
                       const SizedBox(height: 20.0),
-
-// TODO Modelo de data de nascimento
-
-                      CustomField(
-                        choosedIcon: FontAwesomeIcons.cakeCandles,
-                        controller: birthDateController,
-                        labelText: 'Data de Nascimento',
-                        obscureText: false,
-                        enableSuggestions: true,
-                        autocorrect: true,
-                        keyboardType: TextInputType.text,
-                      ),
+                      BirthDateField(
+                          choosedIcon: FontAwesomeIcons.cakeCandles,
+                          labelText: 'Data de Nascimento',
+                          controller: birthDateController,
+                          enableSuggestions: true,
+                          autocorrect: true,
+                          keyboardType: TextInputType.datetime),
                       const SizedBox(height: 20.0),
                       CustomField(
                         choosedIcon: FontAwesomeIcons.book,
@@ -127,20 +110,19 @@ class ProfilePacientScreen extends StatelessWidget {
                         keyboardType: TextInputType.text,
                       ),
                       const SizedBox(height: 20.0),
-
-// TODO Selecionar dentre as opções
-
-                      CustomField(
-                        choosedIcon: FontAwesomeIcons.rectangleList,
-                        controller: civilStatusController,
+                      CustomDropdown(
                         labelText: 'Estado Civil',
-                        obscureText: false,
-                        enableSuggestions: true,
-                        autocorrect: true,
-                        keyboardType: TextInputType.text,
+                        choosedIcon: FontAwesomeIcons.rectangleList,
+                        items: const [
+                          'Solteiro',
+                          'Divorciado',
+                          'Casado',
+                          'Separado',
+                          'Viúvo'
+                        ],
+                        controller: civilStatusController,
                       ),
                       const SizedBox(height: 20.0),
-
                       CustomField(
                         choosedIcon: FontAwesomeIcons.briefcase,
                         controller: occupationController,
@@ -150,7 +132,6 @@ class ProfilePacientScreen extends StatelessWidget {
                         autocorrect: true,
                         keyboardType: TextInputType.text,
                       ),
-
                       const SizedBox(
                         height: 50.0,
                       ),

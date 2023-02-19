@@ -48,6 +48,10 @@ dependencies:
   cloud_firestore: ^4.3.2
   cloud_functions: ^4.0.8
   firebase_storage: ^11.0.13
+  date_time_picker: ^2.1.0
+  intl: ^0.17.0
+  flutter_localizations:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:
