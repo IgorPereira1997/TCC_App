@@ -7,7 +7,7 @@ import 'package:tcc_fisio_app/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tcc_fisio_app/widgets/custom_button_transparent.dart';
-import 'package:tcc_fisio_app/widgets/custom_signup_field.dart';
+import 'package:tcc_fisio_app/widgets/custom_field.dart';
 
 class HomeAppScreen extends StatefulWidget {
   static String routeName = '/home';
@@ -31,8 +31,6 @@ class _HomeAppScreenState extends State<HomeAppScreen> {
 
   @override
   Widget build(BuildContext context) {
-    //final user = context.read<FirebaseAuthMethods>().user;
-    //final fullName = user.displayName!.split(' ');
     return Scaffold(
       backgroundColor: CustomColors.appBackgroudColor,
       body: SafeArea(
@@ -45,17 +43,6 @@ class _HomeAppScreenState extends State<HomeAppScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              //const SizedBox(height: 150.0),
-              //Text(
-              //  "AvaliaFisio",
-              //  textAlign: TextAlign.center,
-              //  style: GoogleFonts.josefinSans(
-              //    color: Colors.white,
-              //    fontSize: 30,
-              //    fontWeight: FontWeight.bold,
-              //  ),
-              //),
-              //const SizedBox(height: 30.0),
               Flexible(
                 flex: 1,
                 child: Image.asset(
@@ -63,7 +50,6 @@ class _HomeAppScreenState extends State<HomeAppScreen> {
                   height: 500,
                 ),
               ),
-              //const SizedBox(height: 50.0),
               CustomField(
                   choosedIcon: FontAwesomeIcons.idBadge,
                   labelText: 'Email',

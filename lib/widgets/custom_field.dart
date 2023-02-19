@@ -20,6 +20,7 @@ class CustomField extends StatefulWidget {
     this.readOnly,
     this.onTap,
     this.autoValidate,
+    this.enabled,
   }) : super(key: key);
 
   final IconData? choosedIcon;
@@ -35,6 +36,7 @@ class CustomField extends StatefulWidget {
   final bool enableSuggestions;
   final bool autocorrect;
   final bool? readOnly;
+  final bool? enabled;
   final AutovalidateMode? autoValidate;
   final TextInputType keyboardType;
   final List<TextInputFormatter>? inputFormatters;
@@ -73,6 +75,7 @@ class _CustomFieldState extends State<CustomField> {
                 keyboardType: widget.keyboardType,
                 onChanged: widget.onChanged,
                 onSaved: widget.onSaved,
+                enabled: widget.enabled,
                 validator: widget.validator,
                 readOnly: widget.readOnly ?? false,
                 initialValue: widget.initialValue,

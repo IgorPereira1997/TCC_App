@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:tcc_fisio_app/res/custom_colors.dart';
 import 'package:tcc_fisio_app/widgets/custom_back_button.dart';
 import 'package:tcc_fisio_app/widgets/custom_button.dart';
-import 'package:tcc_fisio_app/widgets/custom_signup_field.dart';
+import 'package:tcc_fisio_app/widgets/custom_field.dart';
 
 class ProfilePacientScreen extends StatelessWidget {
   static String routeName = '/patient-profile';

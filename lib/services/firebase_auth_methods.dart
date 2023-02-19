@@ -87,7 +87,7 @@ class FirebaseAuthMethods {
     } on FirebaseAuthException {
       showSnackBar(
           context,
-          'Não há usuário cadastrado com o email utilizado. Verifique o email digitado ou a caixa de entrada do seu email para validá-lo. Caso não seja o caso, crie uma nova conta.',
+          'Credenciais de acesso inválidas. Verifique a caixa de entrada do seu email para validá-lo ou, caso não seja o caso, crie uma nova conta.',
           7); // Displaying the usual firebase error message e.message!
 
       //showSnackBar(context, e.message!); // Displaying the error message

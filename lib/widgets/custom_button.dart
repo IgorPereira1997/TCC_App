@@ -5,10 +5,13 @@ class CustomButton extends StatelessWidget {
     Key? key,
     required this.onTap,
     required this.text,
+    this.choosenColor,
+    this.choosenFontWeight,
   }) : super(key: key);
   final String text;
   final VoidCallback onTap;
-
+  final Color? choosenColor;
+  final FontWeight? choosenFontWeight;
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
@@ -16,7 +19,8 @@ class CustomButton extends StatelessWidget {
       child: ElevatedButton(
         style: ButtonStyle(
           minimumSize: MaterialStateProperty.all(const Size(150, 40)),
-          backgroundColor: MaterialStateProperty.all(Colors.black),
+          backgroundColor:
+              MaterialStateProperty.all(choosenColor ?? Colors.black),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(18.0),
@@ -24,7 +28,12 @@ class CustomButton extends StatelessWidget {
           ),
         ),
         onPressed: onTap,
-        child: Text(text),
+        child: Text(
+          text,
+          style: TextStyle(
+            fontWeight: choosenFontWeight ?? FontWeight.normal,
+          ),
+        ),
       ),
     );
   }

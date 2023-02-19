@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:tcc_fisio_app/res/custom_colors.dart';
-import 'package:tcc_fisio_app/res/custom_functions.dart';
 import 'package:tcc_fisio_app/screens/home_app_screen.dart';
 import 'package:tcc_fisio_app/services/firebase_auth_methods.dart';
 import 'package:tcc_fisio_app/utils/show_snackbar.dart';
@@ -10,26 +9,28 @@ import 'package:tcc_fisio_app/widgets/custom_back_button.dart';
 import 'package:tcc_fisio_app/widgets/custom_button.dart';
 import 'package:tcc_fisio_app/widgets/custom_field.dart';
 
-class PhysioChangeEmailScreen extends StatefulWidget {
-  static String routeName = '/physio-change-email';
+class PhysioChangePasswordScreen extends StatefulWidget {
+  static String routeName = '/physio-change-password';
 
-  const PhysioChangeEmailScreen({
+  const PhysioChangePasswordScreen({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<PhysioChangeEmailScreen> createState() =>
-      _PhysioChangeEmailScreenState();
+  State<PhysioChangePasswordScreen> createState() =>
+      _PhysioChangePasswordScreenState();
 }
 
-class _PhysioChangeEmailScreenState extends State<PhysioChangeEmailScreen> {
+class _PhysioChangePasswordScreenState
+    extends State<PhysioChangePasswordScreen> {
   final _formKey = GlobalKey<FormState>();
 
   String? _email; // ignore: unused_field
   String? _password; // ignore: unused_field
 
-  final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _newPasswordController = TextEditingController();
+  final _newPasswordConfirmController = TextEditingController();
 
   @override
   void dispose() {
@@ -54,16 +55,16 @@ class _PhysioChangeEmailScreenState extends State<PhysioChangeEmailScreen> {
                 children: [
                   const SizedBox(height: 20.0),
                   const CustomBackButton(),
-                  const SizedBox(height: 100.0),
+                  const SizedBox(height: 70.0),
                   const Text(
-                    "Alterar/Atualizar Email",
+                    "Alterar/Atualizar Senha",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontSize: 35,
                         color: Colors.white,
                         fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(height: 20.0),
+                  const SizedBox(height: 50.0),
                   Form(
                     key: _formKey,
                     child: Padding(
@@ -76,20 +77,21 @@ class _PhysioChangeEmailScreenState extends State<PhysioChangeEmailScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const SizedBox(height: 16.0),
-                          Text(
-                            'Email Atual: ${user?.email}',
-                            style: const TextStyle(
+                          const Text(
+                            'Para alterar a sua senha, preencha os campos abaixo:',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,
                               letterSpacing: 0.5,
                             ),
                           ),
-                          const SizedBox(height: 100.0),
+                          const SizedBox(height: 50.0),
                           CustomField(
-                            choosedIcon: FontAwesomeIcons.envelope,
-                            controller: _emailController,
-                            labelText: 'Novo Email',
-                            obscureText: false,
+                            choosedIcon: FontAwesomeIcons.lock,
+                            controller: _passwordController,
+                            labelText: 'Senha Atual',
+                            obscureText: true,
                             enableSuggestions: true,
                             autocorrect: true,
                             keyboardType: TextInputType.text,
@@ -100,12 +102,27 @@ class _PhysioChangeEmailScreenState extends State<PhysioChangeEmailScreen> {
                               return null;
                             },
                           ),
+                          const SizedBox(height: 60.0),
+                          CustomField(
+                            choosedIcon: FontAwesomeIcons.key,
+                            controller: _newPasswordController,
+                            labelText: 'Digite a nova senha',
+                            obscureText: true,
+                            enableSuggestions: false,
+                            autocorrect: false,
+                            keyboardType: TextInputType.text,
+                            onChanged: (value) {
+                              setState(() {
+                                _password = value;
+                              });
+                              return null;
+                            },
+                          ),
                           const SizedBox(height: 25.0),
                           CustomField(
                             choosedIcon: FontAwesomeIcons.key,
-                            controller: _passwordController,
-                            labelText:
-                                'Digite a senha para confirmar a operação',
+                            controller: _newPasswordConfirmController,
+                            labelText: 'Digite novamente a nova senha',
                             obscureText: true,
                             enableSuggestions: false,
                             autocorrect: false,
@@ -118,43 +135,46 @@ class _PhysioChangeEmailScreenState extends State<PhysioChangeEmailScreen> {
                             },
                           ),
                           const SizedBox(
-                            height: 100.0,
+                            height: 50.0,
                           ),
                           CustomButton(
                             onTap: () async {
-                              _formKey.currentState!.validate();
-                              _formKey.currentState!.save();
-                              if (email.isEmpty || password.isEmpty) {
+                              if (password.isEmpty) {
                                 if (context.mounted) {
                                   showSnackBar(context,
-                                      'O campo Novo Email está vazio. Por favor, preencha-o e tente novamente.');
+                                      'Por favor, digite a sua senha atual e tente novamente.');
                                 }
-                              } else if (password.isEmpty) {
+                              } else if (newPassword.isEmpty) {
                                 if (context.mounted) {
                                   showSnackBar(context,
-                                      'Por favor, digite a sua senha e tente novamente.');
+                                      'Por favor, digite a sua nova senha e tente novamente.');
                                 }
-                              } else if (await isEmailRegistered(email)) {
+                              } else if (newPasswordConfirm.isEmpty) {
                                 if (context.mounted) {
                                   showSnackBar(context,
-                                      'Email digitado já está cadastrado no sistema!');
+                                      'Por favor, digite a confirmação de sua nova senha e tente novamente.');
                                 }
                               } else if (!(await checkUserPassword(password))) {
                                 if (context.mounted) {
                                   showSnackBar(context,
                                       'A senha digitada está incorreta!');
                                 }
-                              } else {
+                              } else if (newPassword != newPasswordConfirm) {
                                 if (context.mounted) {
-                                  updateYourEmail(
-                                      context: context, email: email);
+                                  showSnackBar(context,
+                                      'A nova senha e sua confirmação diferem. Por favor, verifique-as e tente novamente.');
+                                }
+                              } else {
+                                await user!.updatePassword(newPassword);
+                                FirebaseAuth.instance.signOut();
+                                if (context.mounted) {
                                   Navigator.pushNamedAndRemoveUntil(
                                       context,
                                       HomeAppScreen.routeName,
                                       (route) => false);
 
                                   showSnackBar(context,
-                                      'Foi enviada uma verificação para o novo email. Valide o novo email e faça login novamente.');
+                                      'A sua senha foi atualizada com sucesso. Faça o login novamente.');
                                 }
                               }
                             },
@@ -173,7 +193,9 @@ class _PhysioChangeEmailScreenState extends State<PhysioChangeEmailScreen> {
     );
   }
 
-  String get email => _emailController.text;
-
   String get password => _passwordController.text;
+
+  String get newPassword => _newPasswordController.text;
+
+  String get newPasswordConfirm => _newPasswordConfirmController.text;
 }

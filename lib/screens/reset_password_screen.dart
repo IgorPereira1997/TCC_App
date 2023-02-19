@@ -8,7 +8,7 @@ import 'package:tcc_fisio_app/services/firebase_auth_methods.dart';
 import 'package:tcc_fisio_app/utils/show_snackbar.dart';
 import 'package:tcc_fisio_app/widgets/custom_back_button.dart';
 import 'package:tcc_fisio_app/widgets/custom_button.dart';
-import 'package:tcc_fisio_app/widgets/custom_signup_field.dart';
+import 'package:tcc_fisio_app/widgets/custom_field.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   static String routeName = '/reset-password';
@@ -176,7 +176,7 @@ class _ResetPasswordScreen extends State<ResetPasswordScreen> {
                                 cpf.isEmpty ||
                                 email.isEmpty) {
                               showSnackBar(context,
-                                  'Há campos em branco. Preencha-os e tente novamente.');
+                                  'Há campos vazios. Preencha-os e tente novamente.');
                             } else if (!isValidName(firstName)) {
                               showSnackBar(
                                   context, 'Nome digitado é inválido!');

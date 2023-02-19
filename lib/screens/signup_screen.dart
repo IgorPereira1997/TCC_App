@@ -8,7 +8,7 @@ import 'package:tcc_fisio_app/services/firebase_auth_methods.dart';
 import 'package:tcc_fisio_app/utils/show_snackbar.dart';
 import 'package:tcc_fisio_app/widgets/custom_back_button.dart';
 import 'package:tcc_fisio_app/widgets/custom_button.dart';
-import 'package:tcc_fisio_app/widgets/custom_signup_field.dart';
+import 'package:tcc_fisio_app/widgets/custom_field.dart';
 
 class SignUpScreen extends StatefulWidget {
   static String routeName = '/signup-physio';

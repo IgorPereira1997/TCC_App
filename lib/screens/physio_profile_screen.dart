@@ -7,11 +7,13 @@ import 'package:flutter/material.dart';
 import 'package:tcc_fisio_app/res/custom_colors.dart';
 import 'package:tcc_fisio_app/res/custom_functions.dart';
 import 'package:tcc_fisio_app/screens/change_email.dart';
+import 'package:tcc_fisio_app/screens/change_password_screen.dart';
+import 'package:tcc_fisio_app/screens/confirm_delete_account.dart';
 import 'package:tcc_fisio_app/services/firebase_auth_methods.dart';
 import 'package:tcc_fisio_app/utils/show_snackbar.dart';
 import 'package:tcc_fisio_app/widgets/custom_back_button.dart';
 import 'package:tcc_fisio_app/widgets/custom_button.dart';
-import 'package:tcc_fisio_app/widgets/custom_signup_field.dart';
+import 'package:tcc_fisio_app/widgets/custom_field.dart';
 
 class PhysioProfileScreen extends StatefulWidget {
   static String routeName = '/physio-check-profile';
@@ -28,6 +30,7 @@ class _PhysioProfileScreenState extends State<PhysioProfileScreen> {
   final _formKey = GlobalKey<FormState>();
 
   late final Stream<DocumentSnapshot> _dataStream;
+  late final User user;
   Map<String, dynamic> data = {};
 
   String? firstName;
@@ -43,6 +46,7 @@ class _PhysioProfileScreenState extends State<PhysioProfileScreen> {
         .collection('users')
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .snapshots();
+    user = FirebaseAuth.instance.currentUser!;
     _dataStream.listen(
       (DocumentSnapshot snapshot) {
         if (mounted && snapshot.exists) {
@@ -93,6 +97,27 @@ class _PhysioProfileScreenState extends State<PhysioProfileScreen> {
                         fontSize: 30,
                         color: Colors.white,
                         fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    'Email: ${user.email!}',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      letterSpacing: 0.5,
+                    ),
+                  ),
+                  const SizedBox(height: 16.0),
+                  const Text(
+                    'Para alterar os dados que permitirem modoficação,\ndigite o(s) novo(s) valor(res) e depois \nclique em "Atualizar Perfil"',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      letterSpacing: 0.5,
+                    ),
                   ),
                   const SizedBox(height: 70.0),
                   Form(
@@ -248,7 +273,22 @@ class _PhysioProfileScreenState extends State<PhysioProfileScreen> {
                                   onTap: () {
                                     _formKey.currentState!.validate();
                                     _formKey.currentState!.save();
-                                    if (isValidName(firstName!) &&
+                                    if (firstName!.isEmpty) {
+                                      if (context.mounted) {
+                                        showSnackBar(context,
+                                            'O campo Nome não pode ser vazio. Por favor, tente novamente.');
+                                      }
+                                    } else if (lastName!.isEmpty) {
+                                      if (context.mounted) {
+                                        showSnackBar(context,
+                                            'O campo Sobrenome não pode ser vazio. Por favor, tente novamente.');
+                                      }
+                                    } else if (phone!.isEmpty) {
+                                      if (context.mounted) {
+                                        showSnackBar(context,
+                                            'O campo Telefone não pode ser vazio. Por favor, tente novamente.');
+                                      }
+                                    } else if (isValidName(firstName!) &&
                                         isValidName(lastName!) &&
                                         isValidPhone(phone!)) {
                                       updateUserDataFS(
@@ -263,7 +303,7 @@ class _PhysioProfileScreenState extends State<PhysioProfileScreen> {
                                   text: 'Atualizar Perfil',
                                 ),
                                 const SizedBox(
-                                  height: 10,
+                                  height: 5,
                                 ),
                                 CustomButton(
                                     onTap: () {
@@ -274,9 +314,29 @@ class _PhysioProfileScreenState extends State<PhysioProfileScreen> {
                                     },
                                     text: 'Alterar Email'),
                                 const SizedBox(
-                                  height: 10,
+                                  height: 5,
                                 ),
-                                CustomButton(onTap: () {}, text: 'Mudar Senha'),
+                                CustomButton(
+                                    onTap: () {
+                                      if (context.mounted) {
+                                        Navigator.pushNamed(
+                                            context,
+                                            PhysioChangePasswordScreen
+                                                .routeName);
+                                      }
+                                    },
+                                    text: 'Mudar Senha'),
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                                CustomButton(
+                                    onTap: () {
+                                      if (context.mounted) {
+                                        Navigator.pushNamed(context,
+                                            PhysioDeleteAccount.routeName);
+                                      }
+                                    },
+                                    text: 'Deletar Conta')
                               ],
                             );
                           } else if (snapshot.hasError) {
