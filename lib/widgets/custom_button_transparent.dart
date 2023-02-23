@@ -14,12 +14,13 @@ class CustomTransparentButton extends StatelessWidget {
     return ElevatedButton(
       style: ButtonStyle(
         minimumSize: MaterialStateProperty.all(const Size(150, 40)),
-        backgroundColor: MaterialStateProperty.all(Colors.transparent),
-        shadowColor: MaterialStateProperty.all(Colors.transparent),
+        backgroundColor: MaterialStateProperty.all(
+            const Color(0xFF0C2365).withOpacity(0.05)),
+        shadowColor: MaterialStateProperty.all(
+            const Color(0xFF0C2365).withOpacity(0.05)),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(18.0),
-              side: const BorderSide(color: Colors.transparent)),
+              borderRadius: BorderRadius.circular(18.0), side: BorderSide.none),
         ),
       ),
       onPressed: onTap,
