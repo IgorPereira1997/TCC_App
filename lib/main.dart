@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
           ],
           routes: {
             HomeAppScreen.routeName: (context) => const HomeAppScreen(),
-            MainScreen.routeName: (context) => MainScreen(),
+            MainScreen.routeName: (context) => const MainScreen(),
             SignUpScreen.routeName: (context) => const SignUpScreen(),
             SearchPacientScreen.routeName: (context) =>
                 const SearchPacientScreen(),
@@ -91,7 +91,7 @@ class AuthWrapper extends StatelessWidget {
     final firebaseUser = context.watch<User?>();
 
     if (firebaseUser != null) {
-      return MainScreen();
+      return const MainScreen();
     }
     return const HomeAppScreen();
   }

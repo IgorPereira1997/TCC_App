@@ -15,7 +15,7 @@ import 'package:tcc_fisio_app/res/custom_colors.dart';
 
 class MainScreen extends StatefulWidget {
   static String routeName = '/main';
-  MainScreen({Key? key}) : super(key: key);
+  const MainScreen({Key? key}) : super(key: key);
 
   @override
   State<MainScreen> createState() => _MainScreenState();

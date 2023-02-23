@@ -1,9 +1,7 @@
 import 'dart:async';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tcc_fisio_app/screens/home_app_screen.dart';
 import 'package:tcc_fisio_app/screens/main_screen.dart';
@@ -236,22 +234,6 @@ Future<void> updateYourEmail(
   }
 }
 
-Future<void> uploadImageT(BuildContext context) async {
-  try {
-    final connection = FirebaseStorage.instance
-        .refFromURL("gs://tcc-igor-fisioapp.appspot.com");
-    if (kIsWeb) {}
-    final testUpload = connection.list();
-    if (connection.name.isEmpty && context.mounted) {
-      showSnackBar(context, 'Consegui conectar, ${testUpload.hashCode}');
-    }
-  } on FirebaseException catch (e) {
-    if (context.mounted) {
-      showSnackBar(context, 'Error reported: ${e.toString()}');
-    }
-  }
-}
-
 Future<void> uploadImage(BuildContext context, File image) async {
   final FirebaseStorage storage = FirebaseStorage.instance;
   // Create a reference to the file you want to upload
@@ -276,7 +258,6 @@ Future<void> uploadImage(BuildContext context, File image) async {
 
     // Get the download URL for the uploaded file
     final downloadURL = await ref.getDownloadURL();
-    print('File uploaded to Firebase Storage. Download URL: $downloadURL');
 
     user.updatePhotoURL(downloadURL);
     if (context.mounted) {
