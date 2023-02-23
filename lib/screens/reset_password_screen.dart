@@ -48,7 +48,7 @@ class _ResetPasswordScreen extends State<ResetPasswordScreen> {
         backgroundColor: CustomColors.appBackgroudColor,
         body: SafeArea(
           child: SingleChildScrollView(
-            reverse: true,
+            reverse: false,
             child: Column(
               children: [
                 const SizedBox(height: 20.0),

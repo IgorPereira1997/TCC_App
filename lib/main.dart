@@ -5,6 +5,7 @@ import 'package:tcc_fisio_app/screens/change_email.dart';
 import 'package:tcc_fisio_app/screens/change_password_screen.dart';
 import 'package:tcc_fisio_app/screens/confirm_delete_account.dart';
 import 'package:tcc_fisio_app/screens/home_app_screen.dart';
+import 'package:tcc_fisio_app/screens/icf_pacient.dart';
 import 'package:tcc_fisio_app/screens/main_screen.dart';
 import 'package:tcc_fisio_app/screens/new_pacient_screen.dart';
 import 'package:tcc_fisio_app/screens/physio_profile_screen.dart';
@@ -12,23 +13,15 @@ import 'package:tcc_fisio_app/screens/reset_password_screen.dart';
 import 'package:tcc_fisio_app/screens/signup_screen.dart';
 import 'package:tcc_fisio_app/services/firebase_auth_methods.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  if (kIsWeb) {
-    await FacebookAuth.i.webAndDesktopInitialize(
-        appId: "2069509059913430", cookie: true, xfbml: true, version: "v15.0");
-  }
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
-  //await initializeDateFormatting('pt_BR', null);
   runApp(const MyApp());
 }
 
@@ -66,7 +59,7 @@ class MyApp extends StatelessWidget {
           ],
           routes: {
             HomeAppScreen.routeName: (context) => const HomeAppScreen(),
-            MainScreen.routeName: (context) => const MainScreen(),
+            MainScreen.routeName: (context) => MainScreen(),
             SignUpScreen.routeName: (context) => const SignUpScreen(),
             SearchPacientScreen.routeName: (context) =>
                 const SearchPacientScreen(),
@@ -82,6 +75,7 @@ class MyApp extends StatelessWidget {
                 const PhysioChangePasswordScreen(),
             PhysioDeleteAccount.routeName: (context) =>
                 const PhysioDeleteAccount(),
+            CIFPatientScreen.routeName: (context) => const CIFPatientScreen(),
           },
         );
       }),
@@ -97,7 +91,7 @@ class AuthWrapper extends StatelessWidget {
     final firebaseUser = context.watch<User?>();
 
     if (firebaseUser != null) {
-      return const MainScreen();
+      return MainScreen();
     }
     return const HomeAppScreen();
   }

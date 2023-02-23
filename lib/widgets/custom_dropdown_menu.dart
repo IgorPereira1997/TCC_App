@@ -56,24 +56,28 @@ class CustomDropdownState extends State<CustomDropdown> {
               ),
               labelText: widget.labelText,
             ),
-            child: DropdownButtonHideUnderline(
-              child: DropdownButton<String>(
-                value: _dropdownValue,
-                isDense: true,
-                onChanged: (newValue) {
-                  setState(() {
-                    _dropdownValue = newValue;
-                  });
-                  widget.controller.text = newValue ?? '';
-                },
-                items:
-                    widget.items.map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-              ),
+            child: DropdownButtonFormField<String>(
+              value: _dropdownValue,
+              onChanged: (newValue) {
+                setState(() {
+                  _dropdownValue = newValue;
+                });
+                widget.controller.text = newValue ?? '';
+              },
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please select an option';
+                }
+                return null;
+              },
+              decoration:
+                  const InputDecoration.collapsed(hintText: 'Escolha um Item'),
+              items: widget.items
+                  .map((value) => DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      ))
+                  .toList(),
             ),
           ),
         ),

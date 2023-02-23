@@ -50,7 +50,7 @@ class _PhysioChangePasswordScreenState
             padding: EdgeInsets.only(
                 bottom: MediaQuery.of(context).viewInsets.bottom),
             child: SingleChildScrollView(
-              reverse: true,
+              reverse: false,
               child: Column(
                 children: [
                   const SizedBox(height: 20.0),

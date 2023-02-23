@@ -39,10 +39,8 @@ dependencies:
   firebase_core: ^2.4.1
   firebase_auth: ^4.2.5
   firebase_database: ^10.0.9
-  sign_in_with_apple: ^4.3.0
-  google_sign_in: ^5.4.3
   cupertino_icons: ^1.0.5
-  flutter_facebook_auth: ^5.0.7
+  async: ^2.10.0
   font_awesome_flutter: ^10.3.0
   google_fonts: ^4.0.3
   cloud_firestore: ^4.3.2
@@ -50,6 +48,9 @@ dependencies:
   firebase_storage: ^11.0.13
   date_time_picker: ^2.1.0
   intl: ^0.17.0
+  image_picker: ^0.8.6+2
+  permission_handler: ^10.2.0
+  file_picker: ^5.2.5
   flutter_localizations:
     sdk: flutter
 

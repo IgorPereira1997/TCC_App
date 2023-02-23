@@ -1,0 +1,567 @@
+
+{
+    "ESTRUTURA DA CIF": {  
+        "FUNÇÃO CORPORAL": {
+            "checked": false,
+            "value": null,
+            "FUNÇÕES MENTAIS": {
+                "checked": false,
+                "Consciência": {
+                    "checked": false,
+                    "value": null
+                },
+                "Orientação (tempo, lugar, pessoa)": {
+                    "checked": false,
+                    "value": null
+                },
+                "Funções intelectuais (demência)": {
+                    "checked": false,
+                    "value": null
+                },
+                "Funções da energia e de impulsos": {
+                    "checked": false,
+                    "value": null
+                },
+                "Sono": {
+                    "checked": false,
+                    "value": null
+                },
+                "Atenção": {
+                    "checked": false,
+                    "value": null
+                },
+                "Memória": {
+                    "checked": false,
+                    "value": null
+                },
+                "Funções Emocionais": {
+                    "checked": false,
+                    "value": null
+                },
+                "Funções da percepção": {
+                    "checked": false,
+                    "value": null
+                },
+                "Funções cognitivas superiores": {
+                    "checked": false,
+                    "value": null
+                },
+                "Funções mentais da linguagem": {
+                    "checked": false,
+                    "value": null
+                }
+            },
+            "FUNÇÕES SENSORIAIS E DE DOR": {
+                "checked": false,
+                "Visão": {
+                    "checked": false,
+                    "value": null
+                },
+                "Audição": {
+                    "checked": false,
+                    "value": null
+                },
+                "Vestibular (equilíbrio)": {
+                    "checked": false,
+                    "value": null
+                },
+                "Dor": {
+                    "checked": false,
+                    "value": null
+                }
+            },
+            "FUNÇÕES DA VOZ E DA FALA": {
+                "checked": false,
+                "Voz": {
+                    "checked": false,
+                    "value": null
+                }
+            },
+            "FUNÇÕES DOS SISTEMAS CARDIOVASCULAR, HEMATOLÓGICO, IMUNOLÓGICO E RESPIRATÓRIO": {
+                "checked": false,
+                "Funções do Coração": {
+                    "checked": false,
+                    "value": null
+                },
+                "Pressão Sanguínea": {
+                    "checked": false,
+                    "value": null
+                },
+                "Funções do sistema hematológico": {
+                    "checked": false,
+                    "value": null
+                },
+                "Funções do sistema imunológico (alergias, hipersensibilidade)": {
+                    "checked": false,
+                    "value": null
+                },
+                "Funções do sistema respiratório": {
+                    "checked": false,
+                    "value": null
+                }
+            },
+            "FUNÇÕES DOS SISTEMAS DIGESTIVO, METABÓLICO E ENDÓCRINO": {
+                "checked": false,
+                "Funções digestivas": {
+                    "checked": false,
+                    "value": null
+                },
+                "Funções de defecação": {
+                    "checked": false,
+                    "value": null
+                },
+                "Manutenção do peso": {
+                    "checked": false,
+                    "value": null
+                },
+                "Funções das glândulas endócrinas (mudanças hormonais)": {
+                    "checked": false,
+                    "value": null
+                }
+            },
+            "FUNÇÕES GENITURINÁRIAS E REPRODUTIVAS": {
+                "checked": false,
+                "Funções Urinárias": {
+                    "checked": false,
+                    "value": null
+                },
+                "Funções Sexuais": {
+                    "checked": false,
+                    "value": null
+                }
+            },
+            "FUNÇÕES NEUROMUSCULOESQUELÉTICAS E RELACIONADAS AO MOVIMENTO": {
+                "checked": false,
+                "Mobilidade das articulações": {
+                    "checked": false,
+                    "value": null
+                },
+                "Força muscular": {
+                    "checked": false,
+                    "value": null
+                },
+                "Tônus muscular": {
+                    "checked": false,
+                    "value": null
+                },
+                "Movimentos involuntários": {
+                    "checked": false,
+                    "value": null
+                }
+            },
+            "FUNÇÕES DA PELE E ESTRUTURAS RELACIONADAS A QUAISQUER OUTRAS FUNÇÕES DO CORPO": {
+                "checked": false,
+                "value": null
+            }
+        },
+        "ESTRUTURA CORPORAL": {
+            "checked": false,
+            "value": null,
+            "ESTRUTURA DO SISTEMA NERVOSO": {
+                "checked": false,
+                "value": null,
+                "Cérebro": {
+                    "checked": false,
+                    "value": null
+                },
+                "Medula espinhal e nervos periféricos": {
+                    "checked": false,
+                    "value": null
+                }
+            },
+            "OLHO, OUVIDO E ESTRUTURAS RELACIONADAS": {
+                "checked": false,
+                "value": null
+            },
+            "ESTRUTURAS RELACIONADAS A VOZ E FALA": {
+                "checked": false,
+                "value": null
+            },
+            "ESTRUTURAS DOS SISTEMAS CARDIOVASCULAR, IMUNOLÓGICO E RESPIRATÓRIO": {
+                "checked": false,
+                "value": null,
+                "Sistema cardiovascular": {
+                    "checked": false,
+                    "value": null
+                },
+                "Sistema respiratório": {
+                    "checked": false,
+                    "value": null
+                }
+                },
+            "ESTRUTURAS RELACIONADAS AOS SISTEMAS DIGESTIVO, METABÓLICO E ENDÓCRINO": {
+                "checked": false,
+                "value": null
+            },
+            "ESTRUTURAS RELACIONADAS AO SISTEMA GENITURINÁRIO E REPRODUTIVO": {
+                "checked": false,
+                "value": null,
+                "Sistema urinário": {
+                    "checked": false,
+                    "value": null
+                },
+                "Sistema reprodutivo": {
+                    "checked": false,
+                    "value": null
+                }
+            },
+            "ESTRUTURAS RELACIONADAS AO MOVIMENTO": {
+                "checked": false,
+                "value": null,
+                "Região da cabeça e pescoço": {
+                    "checked": false,
+                    "value": null
+                },
+                "Região de ombro": {
+                    "checked": false,
+                    "value": null
+                },
+                "Extremidade superior (braço, mão)": {
+                    "checked": false,
+                    "value": null
+                },
+                "Pelve": {
+                    "checked": false,
+                    "value": null
+                },
+                "Extremidade inferior(perna, pé)": {
+                    "checked": false,
+                    "value": null
+                },
+                "Tronco": {
+                    "checked": false,
+                    "value": null
+                }
+            },
+            "PELE E ESTRUTURAS RELACIONADAS A QUAISQUER OUTRAS ESTRUTURAS DO CORPO": {
+                "checked": false,
+                "value": null
+            }
+        },
+        "ATIVIDADES E PARTICIPAÇÃO": {
+            "checked": false,
+            "value": null,
+            "APRENDIZAGEM E APLICAÇÃO DO CONHECIMENTO": {
+                "checked": false,
+                "value": null,
+                "Observar/assistir": {
+                    "checked": false,
+                    "value": null
+                },
+                "Resolver problemas": {
+                    "checked": false,
+                    "value": null
+                }
+            },
+            "TAREFAS E DEMANDAS GERAIS": {
+                "checked": false,
+                "value": null,
+                "Realizar uma única tarefa": {
+                    "checked": false,
+                    "value": null
+                },
+                "Realizar tarefas múltiplas": {
+                    "checked": false,
+                    "value": null
+                }
+            },
+            "COMUNICAÇÃO": {
+                "checked": false,
+                "value": null,
+                "Comunicação - recepção de mensagens verbais": {
+                    "checked": false,
+                    "value": null
+                },
+                "Comunicação - recepção de mensagens não verbais": {
+                    "checked": false,
+                    "value": null
+                },
+                "Fala": {
+                    "checked": false,
+                    "value": null
+                },
+                "Conservação": {
+                    "checked": false,
+                    "value": null
+                }
+            },
+            "MOBILIDADE": {
+                "checked": false,
+                "value": null,
+                "Levantar e carregar objetos": {
+                    "checked": false,
+                    "value": null
+                },
+                "Uso fino das mãos (pegar, segurar)": {
+                    "checked": false,
+                    "value": null
+                },
+                "Andar": {
+                    "checked": false,
+                    "value": null
+                },
+                "Deslocar-se utilizando algum tipo de equipamento": {
+                    "checked": false,
+                    "value": null
+                },
+                "Utilização de transporte (carros, ônibus, trem, avião)": {
+                    "checked": false,
+                    "value": null
+                },
+                "Dirigir (bicicleta, motos, dirigir um carro, etc.)": {
+                    "checked": false,
+                    "value": null
+                }
+            },
+            "CUIDADO PESSOAL": {
+                "checked": false,
+                "value": null,
+                "Lavar-se (banhar-se, secar-se, lavar as mãos, etc.)": {
+                    "checked": false,
+                    "value": null
+                },
+                "Cuidado das partes do corpo (escovar os dentes, barbear-se)": {
+                    "checked": false,
+                    "value": null
+                },
+                "Cuidados relacionadas aos processos de excreção": {
+                    "checked": false,
+                    "value": null
+                },
+                "Vestir-se": {
+                    "checked": false,
+                    "value": null
+                },
+                "Comer": {
+                    "checked": false,
+                    "value": null
+                },
+                "Beber": {
+                    "checked": false,
+                    "value": null
+                },
+                "Cuidar da própria saúde": {
+                    "checked": false,
+                    "value": null
+                }
+            },
+            "VIDA DOMÉSTICA": {
+                "checked": false,
+                "value": null,
+                "Aquisição de bens e serviços (fazer compras, etc.)": {
+                    "checked": false,
+                    "value": null
+                },
+                "Tarefas domésticas (limpar a casa, lavar a louça, roupas, passar a ferro, etc.)": {
+                    "checked": false,
+                    "value": null
+                },
+                "Ajudar os outros": {
+                    "checked": false,
+                    "value": null
+                }
+            },
+            "RELAÇÕES E INTERAÇÕES INTERPESSOAIS": {
+                "checked": false,
+                "value": null,
+                "Relações com estranhos": {
+                    "checked": false,
+                    "value": null
+                },
+                "Relações formais": {
+                    "checked": false,
+                    "value": null
+                },
+                "Relações sociais informais": {
+                    "checked": false,
+                    "value": null
+                },
+                "Relações familiares": {
+                    "checked": false,
+                    "value": null
+                },
+                "Relações íntimas": {
+                    "checked": false,
+                    "value": null
+                }
+            },
+            "ÁREAS PRINCIPAIS DA VIDA": {
+                "checked": false,
+                "value": null,
+                "Educação escolar": {
+                    "checked": false,
+                    "value": null
+                },
+                "Transações econômicas básicas": {
+                    "checked": false,
+                    "value": null
+                },
+                "Auto-suficiência econômica": {
+                    "checked": false,
+                    "value": null
+                }
+            },
+            "VIDA COMUNITÁRIA, SOCIAL E CÍVICA": {
+                "checked": false,
+                "value": null,
+                "Vida comunitária": {
+                    "checked": false,
+                    "value": null
+                },
+                "Recreação e lazer": {
+                    "checked": false,
+                    "value": null
+                },
+                "Religião e espiritualidade": {
+                    "checked": false,
+                    "value": null
+                }
+            },
+            "QUALQUER OUTRA ATIVIDADE E PARTICIPAÇÃO": {
+                "checked": false,
+                "value": null
+            }
+        },
+        "FATORES AMBIENTAIS": {
+            "checked": false, 
+            "value": null,
+            "PRODUTOS E TECNOLOGIA": {
+                "checked": false,
+                "value": null,
+                "Produtos ou substâncias para consumo pessoal (comida, remédios)": {
+                    "checked": false,
+                    "value": null
+                },
+                "Para uso pessoal na vida diária": {
+                    "checked": false,
+                    "value": null
+                },
+                "Mobilidade e transporte pessoal em ambientes internos e externos": {
+                    "checked": false,
+                    "value": null
+                },
+                "Produtos e tecnologia para comunicação": {
+                    "checked": false,
+                    "value": null
+                },
+                "Produtos e tecnologia usados em projeto, arquitetura e construção de edifícios de uso privado": {
+                    "checked": false,
+                    "value": null
+                }
+            },
+            "AMBIENTE NATURAL E MUDANÇAS AMBIENTAIS": {
+                "checked": false,
+                "value": null,
+                "Clima": {
+                    "checked": false,
+                    "value": null
+                },
+                "Luz": {
+                    "checked": false,
+                    "value": null
+                },
+                "Som": {
+                    "checked": false,
+                    "value": null
+                }
+            },
+            "APOIO E RELACIONAMENTOS": {
+                "checked": false,
+                "value": null,
+                "Família próxima": {
+                    "checked": false,
+                    "value": null
+                },
+                "Amigos": {
+                    "checked": false,
+                    "value": null
+                },
+                "Conhecidos, companheiros, colegas, vizinhos e membros da comunidade": {
+                    "checked": false,
+                    "value": null
+                },
+                "Pessoas em posição de autoridade": {
+                    "checked": false,
+                    "value": null
+                },
+                "Cuidadores e assistentes pessoais": {
+                    "checked": false,
+                    "value": null
+                },
+                "Profissionais da saúde": {
+                    "checked": false,
+                    "value": null
+                },
+                "Outros profissionais que fornecem serviços relacionados a saúde": {
+                    "checked": false,
+                    "value": null
+                }
+            },
+            "ATITUDES": {
+                "checked": false,
+                "value": null,
+                "Atitudes individuais de membros da família imediata": {
+                    "checked": false,
+                    "value": null
+                },
+                "Atitudes individuais dos amigos": {
+                    "checked": false,
+                    "value": null
+                },
+                "Atitudes individuais dos cuidadores e assistentes pessoais": {
+                    "checked": false,
+                    "value": null
+                },
+                "Atitudes individuais dos profissionais da saúde": {
+                    "checked": false,
+                    "value": null
+                },
+                "Atitudes individuais dos profissionais relacionados a saúde": {
+                    "checked": false,
+                    "value": null
+                },
+                "Atitudes sociais": {
+                    "checked": false,
+                    "value": null
+                },
+                "Normas, práticas e ideologias sociais": {
+                    "checked": false,
+                    "value": null
+                }
+            },
+            "SERVIÇOS, SISTEMAS E POLÍTICAS": {
+                "checked": false,
+                "value": null,
+                "Habitação": {
+                    "checked": false,
+                    "value": null
+                },
+                "De transporte": {
+                    "checked": false,
+                    "value": null
+                },
+                "De suporte social geral": {
+                    "checked": false,
+                    "value": null
+                },
+                "De saúde": {
+                    "checked": false,
+                    "value": null
+                },
+                "De educação e treinamento": {
+                    "checked": false,
+                    "value": null
+                },
+                "De trabalho e emprego": {
+                    "checked": false,
+                    "value": null
+                }
+            },
+            "QUAISQUER OUTROS FATORES AMBIENTAIS": {
+                "checked": false,
+                "value": null
+            }
+        }
+    }
+
+}

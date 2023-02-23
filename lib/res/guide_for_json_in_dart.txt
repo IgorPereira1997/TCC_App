@@ -1,0 +1,3 @@
+Map<String ,<String, Map<String, Map<String, dynamic>?>>> --> Theorarically the right way to acess it via flutter
+
+Map<String, Map<String, Map<String, int>?>> activityMap <-- Mapeamento de cada função CIF

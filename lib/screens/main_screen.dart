@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tcc_fisio_app/res/custom_functions.dart';
@@ -10,9 +13,34 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tcc_fisio_app/res/custom_colors.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
   static String routeName = '/main';
-  const MainScreen({Key? key}) : super(key: key);
+  MainScreen({Key? key}) : super(key: key);
+
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  late final Stream<User?> _userStream;
+  late final StreamController<User?> _userController =
+      StreamController<User?>.broadcast();
+  late final User user;
+
+  @override
+  void initState() {
+    super.initState();
+    user = FirebaseAuth.instance.currentUser!;
+
+    _userStream = FirebaseAuth.instance.userChanges();
+    _userStream.listen((User? user) {
+      if (user != null) {
+        _userController.add(user);
+      }
+
+      user = FirebaseAuth.instance.currentUser!;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +55,7 @@ class MainScreen extends StatelessWidget {
             padding: EdgeInsets.only(
                 bottom: MediaQuery.of(context).viewInsets.bottom),
             child: SingleChildScrollView(
-              reverse: true,
+              reverse: false,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -40,33 +68,60 @@ class MainScreen extends StatelessWidget {
                         color: Colors.white,
                         fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(height: 50.0),
-                  user.photoURL != null
-                      ? ClipOval(
-                          child: Material(
-                            color: CustomColors.firebaseGrey.withOpacity(0.3),
-                            child: Image.network(
-                              user.photoURL!,
-                              fit: BoxFit.fitHeight,
-                              height: 150.0,
-                              width: 150.0,
-                            ),
-                          ),
-                        )
-                      : ClipOval(
-                          child: Material(
-                            color: CustomColors.firebaseGrey.withOpacity(0.3),
-                            child: const Padding(
-                              padding: EdgeInsets.all(20.0),
-                              child: Icon(
-                                FontAwesomeIcons.person,
-                                size: 60,
-                                color: CustomColors.firebaseGrey,
-                              ),
-                            ),
-                          ),
-                        ),
-                  const SizedBox(height: 50.0),
+                  const SizedBox(height: 30.0),
+                  StreamBuilder<User?>(
+                      stream: _userController.stream,
+                      builder: (context, snapshot) {
+                        if (snapshot.hasError) {
+                          return Center(
+                            child: Text('Error: ${snapshot.error}'),
+                          );
+                        }
+                        if (!snapshot.hasData) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        } else {
+                          return Column(
+                            children: [
+                              snapshot.data!.photoURL != null
+                                  ? ClipOval(
+                                      child: Material(
+                                        color: CustomColors.firebaseGrey
+                                            .withOpacity(0.3),
+                                        child: InkWell(
+                                          onTap: () {},
+                                          child: Image.network(
+                                            snapshot.data!.photoURL!,
+                                            fit: BoxFit.fitHeight,
+                                            height: 200.0,
+                                            width: 200.0,
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  : ClipOval(
+                                      child: Material(
+                                        color: CustomColors.firebaseGrey
+                                            .withOpacity(0.3),
+                                        child: InkWell(
+                                          onTap: () {},
+                                          child: const Padding(
+                                            padding: EdgeInsets.all(20.0),
+                                            child: Icon(
+                                              FontAwesomeIcons.person,
+                                              size: 100,
+                                              color: CustomColors.firebaseGrey,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                            ],
+                          );
+                        }
+                      }),
+                  const SizedBox(height: 30.0),
                   FutureBuilder<Map<String, dynamic>?>(
                     future: fetchData(user),
                     builder: (context, snapshot) {

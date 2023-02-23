@@ -49,7 +49,7 @@ class _PhysioChangeEmailScreenState extends State<PhysioChangeEmailScreen> {
             padding: EdgeInsets.only(
                 bottom: MediaQuery.of(context).viewInsets.bottom),
             child: SingleChildScrollView(
-              reverse: true,
+              reverse: false,
               child: Column(
                 children: [
                   const SizedBox(height: 20.0),
@@ -77,7 +77,7 @@ class _PhysioChangeEmailScreenState extends State<PhysioChangeEmailScreen> {
                         children: [
                           const SizedBox(height: 16.0),
                           Text(
-                            'Email Atual: ${user?.email}',
+                            'Email Atual: ${user!.email}',
                             style: const TextStyle(
                               color: Colors.white,
                               fontSize: 20,

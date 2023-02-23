@@ -1,9 +1,14 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tcc_fisio_app/screens/home_app_screen.dart';
 import 'package:tcc_fisio_app/screens/main_screen.dart';
 import 'package:tcc_fisio_app/utils/show_snackbar.dart';
+import 'dart:io';
 
 class FirebaseAuthMethods {
   final FirebaseAuth _auth;
@@ -229,4 +234,79 @@ Future<void> updateYourEmail(
     showSnackBar(
         context, e.message!); // Displaying the usual firebase error message
   }
+}
+
+Future<void> uploadImageT(BuildContext context) async {
+  try {
+    final connection = FirebaseStorage.instance
+        .refFromURL("gs://tcc-igor-fisioapp.appspot.com");
+    if (kIsWeb) {}
+    final testUpload = connection.list();
+    if (connection.name.isEmpty && context.mounted) {
+      showSnackBar(context, 'Consegui conectar, ${testUpload.hashCode}');
+    }
+  } on FirebaseException catch (e) {
+    if (context.mounted) {
+      showSnackBar(context, 'Error reported: ${e.toString()}');
+    }
+  }
+}
+
+Future<void> uploadImage(BuildContext context, File image) async {
+  final FirebaseStorage storage = FirebaseStorage.instance;
+  // Create a reference to the file you want to upload
+  final user = FirebaseAuth.instance.currentUser!;
+  String fileName = DateTime.now().millisecondsSinceEpoch.toString();
+
+  try {
+    // Clean folder up
+    await deleteFolder(path: '${user.uid}/profileImage');
+    //await delRef.delete();
+  } catch (e) {
+    if (context.mounted) {
+      showSnackBar(context, 'Error deleting folder: $e');
+    }
+  }
+
+  Reference ref = storage.ref().child('${user.uid}/profileImage/$fileName.jpg');
+
+  try {
+    // Upload the file to Firebase Storage
+    await ref.putFile(image);
+
+    // Get the download URL for the uploaded file
+    final downloadURL = await ref.getDownloadURL();
+    print('File uploaded to Firebase Storage. Download URL: $downloadURL');
+
+    user.updatePhotoURL(downloadURL);
+    if (context.mounted) {
+      showSnackBar(context, 'Imagem atualizada com sucesso!');
+    }
+  } catch (e) {
+    if (context.mounted) {
+      showSnackBar(context, 'Error uploading file: $e');
+    }
+  }
+}
+
+Future<void> deleteFolder({required String path}) async {
+  List<String> paths = [];
+  paths = await _deleteFolder(path, paths);
+  for (String path in paths) {
+    await FirebaseStorage.instance.ref().child(path).delete();
+  }
+}
+
+Future<List<String>> _deleteFolder(String folder, List<String> paths) async {
+  ListResult list =
+      await FirebaseStorage.instance.ref().child(folder).listAll();
+  List<Reference> items = list.items;
+  List<Reference> prefixes = list.prefixes;
+  for (Reference item in items) {
+    paths.add(item.fullPath);
+  }
+  for (Reference subfolder in prefixes) {
+    paths = await _deleteFolder(subfolder.fullPath, paths);
+  }
+  return paths;
 }
