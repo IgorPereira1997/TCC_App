@@ -56,28 +56,31 @@ class CustomDropdownState extends State<CustomDropdown> {
               ),
               labelText: widget.labelText,
             ),
-            child: DropdownButtonFormField<String>(
-              value: _dropdownValue,
-              onChanged: (newValue) {
-                setState(() {
-                  _dropdownValue = newValue;
-                });
-                widget.controller.text = newValue ?? '';
-              },
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please select an option';
-                }
-                return null;
-              },
-              decoration:
-                  const InputDecoration.collapsed(hintText: 'Escolha um Item'),
-              items: widget.items
-                  .map((value) => DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      ))
-                  .toList(),
+            child: Padding(
+              padding: const EdgeInsets.only(right: 10.0),
+              child: DropdownButtonFormField<String>(
+                value: _dropdownValue,
+                onChanged: (newValue) {
+                  setState(() {
+                    _dropdownValue = newValue;
+                  });
+                  widget.controller.text = newValue ?? '';
+                },
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please select an option';
+                  }
+                  return null;
+                },
+                decoration: const InputDecoration.collapsed(
+                    hintText: 'Escolha um Item'),
+                items: widget.items
+                    .map((value) => DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        ))
+                    .toList(),
+              ),
             ),
           ),
         ),
