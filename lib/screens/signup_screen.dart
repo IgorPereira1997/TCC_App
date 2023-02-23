@@ -9,6 +9,7 @@ import 'package:tcc_fisio_app/utils/show_snackbar.dart';
 import 'package:tcc_fisio_app/widgets/custom_back_button.dart';
 import 'package:tcc_fisio_app/widgets/custom_button.dart';
 import 'package:tcc_fisio_app/widgets/custom_field.dart';
+import 'package:tcc_fisio_app/widgets/custom_field_password.dart';
 
 class SignUpScreen extends StatefulWidget {
   static String routeName = '/signup-physio';
@@ -105,7 +106,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             choosedIcon: FontAwesomeIcons.userDoctor,
                             labelText: 'Nome',
                             controller: _firstNameController,
-                            obscureText: false,
                             enableSuggestions: true,
                             autocorrect: true,
                             keyboardType: TextInputType.text,
@@ -121,7 +121,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             choosedIcon: FontAwesomeIcons.userDoctor,
                             labelText: 'Sobrenome',
                             controller: _lastNameController,
-                            obscureText: false,
                             enableSuggestions: true,
                             autocorrect: true,
                             keyboardType: TextInputType.text,
@@ -137,7 +136,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             choosedIcon: FontAwesomeIcons.book,
                             labelText: 'CPF',
                             controller: _cpfController,
-                            obscureText: false,
                             enableSuggestions: true,
                             autocorrect: true,
                             keyboardType: TextInputType.number,
@@ -156,7 +154,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             choosedIcon: FontAwesomeIcons.idBadge,
                             controller: _crefitoController,
                             labelText: 'CREFITO',
-                            obscureText: false,
                             enableSuggestions: true,
                             autocorrect: true,
                             keyboardType: TextInputType.text,
@@ -175,7 +172,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             choosedIcon: FontAwesomeIcons.envelope,
                             controller: _emailController,
                             labelText: 'Email',
-                            obscureText: false,
                             enableSuggestions: true,
                             autocorrect: true,
                             keyboardType: TextInputType.text,
@@ -191,7 +187,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             choosedIcon: FontAwesomeIcons.phone,
                             controller: _telController,
                             labelText: 'Telefone',
-                            obscureText: false,
                             enableSuggestions: true,
                             autocorrect: true,
                             keyboardType: TextInputType.phone,
@@ -206,11 +201,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             },
                           ),
                           const SizedBox(height: 16.0),
-                          CustomField(
+                          CustomFieldPassword(
                             choosedIcon: FontAwesomeIcons.key,
                             controller: _passwordController,
                             labelText: 'Senha',
-                            obscureText: true,
                             enableSuggestions: false,
                             autocorrect: false,
                             keyboardType: TextInputType.text,
@@ -222,11 +216,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             },
                           ),
                           const SizedBox(height: 16.0),
-                          CustomField(
+                          CustomFieldPassword(
                             choosedIcon: FontAwesomeIcons.key,
                             controller: _confirmPasswordController,
                             labelText: 'Confirmar Senha',
-                            obscureText: true,
                             enableSuggestions: false,
                             autocorrect: false,
                             keyboardType: TextInputType.text,

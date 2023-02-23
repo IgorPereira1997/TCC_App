@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tcc_fisio_app/widgets/custom_button_transparent.dart';
 import 'package:tcc_fisio_app/widgets/custom_field.dart';
+import 'package:tcc_fisio_app/widgets/custom_field_password.dart';
 
 class HomeAppScreen extends StatefulWidget {
   static String routeName = '/home';
@@ -54,18 +55,16 @@ class _HomeAppScreenState extends State<HomeAppScreen> {
                   choosedIcon: FontAwesomeIcons.idBadge,
                   labelText: 'Email',
                   controller: emailController,
-                  obscureText: false,
                   enableSuggestions: true,
                   autocorrect: true,
                   keyboardType: TextInputType.text),
               const SizedBox(
                 height: 10.0,
               ),
-              CustomField(
+              CustomFieldPassword(
                   choosedIcon: FontAwesomeIcons.key,
                   labelText: 'Senha',
                   controller: passwordController,
-                  obscureText: true,
                   enableSuggestions: false,
                   autocorrect: false,
                   keyboardType: TextInputType.text),

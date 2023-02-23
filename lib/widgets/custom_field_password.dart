@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class CustomField extends StatefulWidget {
-  const CustomField({
+class CustomFieldPassword extends StatefulWidget {
+  const CustomFieldPassword({
     Key? key,
     required this.choosedIcon,
     //required this.hintText,
@@ -22,6 +23,8 @@ class CustomField extends StatefulWidget {
     this.enabled,
   }) : super(key: key);
 
+  final _obscureText = true;
+
   final IconData? choosedIcon;
   //final String? hintText;
   final String? labelText;
@@ -40,10 +43,11 @@ class CustomField extends StatefulWidget {
   final List<TextInputFormatter>? inputFormatters;
 
   @override
-  State<CustomField> createState() => _CustomFieldState();
+  State<CustomFieldPassword> createState() => _CustomFieldPasswordState();
 }
 
-class _CustomFieldState extends State<CustomField> {
+class _CustomFieldPasswordState extends State<CustomFieldPassword> {
+  bool _obscureText = true;
   @override
   Widget build(BuildContext context) => SizedBox(
         width: double.infinity,
@@ -69,9 +73,27 @@ class _CustomFieldState extends State<CustomField> {
                       color: Colors.black,
                     ),
                   ),
-                  //hintText: hintText,
+                  suffixIcon: Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: IconButton(
+                      icon: Icon(
+                        _obscureText
+                            ? FontAwesomeIcons.eyeSlash
+                            : FontAwesomeIcons.eye,
+                        color: Colors.grey,
+                        size: 17,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _obscureText = !_obscureText;
+                        });
+                      },
+                    ),
+                  ),
                   labelText: widget.labelText,
                 ),
+                obscureText: _obscureText,
+                obscuringCharacter: '•',
                 enableSuggestions: widget.enableSuggestions,
                 autocorrect: widget.autocorrect,
                 keyboardType: widget.keyboardType,

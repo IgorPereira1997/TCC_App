@@ -7,7 +7,7 @@ import 'package:tcc_fisio_app/services/firebase_auth_methods.dart';
 import 'package:tcc_fisio_app/utils/show_snackbar.dart';
 import 'package:tcc_fisio_app/widgets/custom_back_button.dart';
 import 'package:tcc_fisio_app/widgets/custom_button.dart';
-import 'package:tcc_fisio_app/widgets/custom_field.dart';
+import 'package:tcc_fisio_app/widgets/custom_field_password.dart';
 
 class PhysioChangePasswordScreen extends StatefulWidget {
   static String routeName = '/physio-change-password';
@@ -87,11 +87,10 @@ class _PhysioChangePasswordScreenState
                             ),
                           ),
                           const SizedBox(height: 50.0),
-                          CustomField(
+                          CustomFieldPassword(
                             choosedIcon: FontAwesomeIcons.lock,
                             controller: _passwordController,
                             labelText: 'Senha Atual',
-                            obscureText: true,
                             enableSuggestions: true,
                             autocorrect: true,
                             keyboardType: TextInputType.text,
@@ -103,11 +102,10 @@ class _PhysioChangePasswordScreenState
                             },
                           ),
                           const SizedBox(height: 60.0),
-                          CustomField(
+                          CustomFieldPassword(
                             choosedIcon: FontAwesomeIcons.key,
                             controller: _newPasswordController,
                             labelText: 'Digite a nova senha',
-                            obscureText: true,
                             enableSuggestions: false,
                             autocorrect: false,
                             keyboardType: TextInputType.text,
@@ -119,11 +117,10 @@ class _PhysioChangePasswordScreenState
                             },
                           ),
                           const SizedBox(height: 25.0),
-                          CustomField(
+                          CustomFieldPassword(
                             choosedIcon: FontAwesomeIcons.key,
                             controller: _newPasswordConfirmController,
                             labelText: 'Digite novamente a nova senha',
-                            obscureText: true,
                             enableSuggestions: false,
                             autocorrect: false,
                             keyboardType: TextInputType.text,

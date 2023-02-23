@@ -9,6 +9,7 @@ import 'package:tcc_fisio_app/utils/show_snackbar.dart';
 import 'package:tcc_fisio_app/widgets/custom_back_button.dart';
 import 'package:tcc_fisio_app/widgets/custom_button.dart';
 import 'package:tcc_fisio_app/widgets/custom_field.dart';
+import 'package:tcc_fisio_app/widgets/custom_field_password.dart';
 
 class PhysioChangeEmailScreen extends StatefulWidget {
   static String routeName = '/physio-change-email';
@@ -89,7 +90,6 @@ class _PhysioChangeEmailScreenState extends State<PhysioChangeEmailScreen> {
                             choosedIcon: FontAwesomeIcons.envelope,
                             controller: _emailController,
                             labelText: 'Novo Email',
-                            obscureText: false,
                             enableSuggestions: true,
                             autocorrect: true,
                             keyboardType: TextInputType.text,
@@ -101,12 +101,11 @@ class _PhysioChangeEmailScreenState extends State<PhysioChangeEmailScreen> {
                             },
                           ),
                           const SizedBox(height: 25.0),
-                          CustomField(
+                          CustomFieldPassword(
                             choosedIcon: FontAwesomeIcons.key,
                             controller: _passwordController,
                             labelText:
                                 'Digite a senha para confirmar a operação',
-                            obscureText: true,
                             enableSuggestions: false,
                             autocorrect: false,
                             keyboardType: TextInputType.text,

@@ -37,8 +37,6 @@ class _MainScreenState extends State<MainScreen> {
       if (user != null) {
         _userController.add(user);
       }
-
-      user = FirebaseAuth.instance.currentUser!;
     });
   }
 
