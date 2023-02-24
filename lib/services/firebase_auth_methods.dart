@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:tcc_fisio_app/screens/home_app_screen.dart';
 import 'package:tcc_fisio_app/screens/main_screen.dart';
 import 'package:tcc_fisio_app/utils/show_snackbar.dart';
@@ -234,7 +235,7 @@ Future<void> updateYourEmail(
   }
 }
 
-Future<void> uploadImage(BuildContext context, File image) async {
+Future<void> uploadImage(BuildContext context, CroppedFile? image) async {
   final FirebaseStorage storage = FirebaseStorage.instance;
   // Create a reference to the file you want to upload
   final user = FirebaseAuth.instance.currentUser!;
@@ -254,7 +255,10 @@ Future<void> uploadImage(BuildContext context, File image) async {
 
   try {
     // Upload the file to Firebase Storage
-    await ref.putFile(image);
+    final bytes = await image!.readAsBytes();
+    await ref.putData(bytes);
+
+    //await ref.putFile(image);
 
     // Get the download URL for the uploaded file
     final downloadURL = await ref.getDownloadURL();

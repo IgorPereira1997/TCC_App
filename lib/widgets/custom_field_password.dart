@@ -23,8 +23,6 @@ class CustomFieldPassword extends StatefulWidget {
     this.enabled,
   }) : super(key: key);
 
-  final _obscureText = true;
-
   final IconData? choosedIcon;
   //final String? hintText;
   final String? labelText;

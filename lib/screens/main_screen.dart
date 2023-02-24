@@ -145,7 +145,7 @@ class _MainScreenState extends State<MainScreen> {
                     'Email: ${user.email!}',
                     style: const TextStyle(
                       color: Colors.white,
-                      fontSize: 18,
+                      fontSize: 15,
                       letterSpacing: 0.5,
                     ),
                   ),
@@ -164,14 +164,6 @@ class _MainScreenState extends State<MainScreen> {
                     },
                     text: 'Sair',
                   ),
-                  /*CustomButton(
-                    onTap: () {
-                      context
-                          .read<FirebaseAuthMethods>()
-                          .deleteAccount(context);
-                    },
-                    text: 'Deletar Conta',
-                  ),*/
                   const SizedBox(height: 50.0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -247,6 +239,9 @@ class _MainScreenState extends State<MainScreen> {
                       ),
                     ],
                   ),
+                  const SizedBox(
+                    height: 30,
+                  )
                 ],
               ),
             ),

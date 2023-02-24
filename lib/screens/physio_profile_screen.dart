@@ -7,6 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:tcc_fisio_app/res/custom_colors.dart';
@@ -46,7 +47,7 @@ class PhysioProfileScreenState extends State<PhysioProfileScreen> {
 
   late Map<String, dynamic> data = {};
 
-  File? _image;
+  XFile? _image;
 
   late final TextEditingController _firstNameController =
       TextEditingController();
@@ -137,10 +138,12 @@ class PhysioProfileScreenState extends State<PhysioProfileScreen> {
       final picker = ImagePicker();
 
       try {
-        final pickedFile = await picker.pickImage(source: source);
+        final pickedFile =
+            await picker.pickImage(source: source, imageQuality: 100);
         if (pickedFile != null) {
           if (context.mounted) {
-            uploadImage(context, File(pickedFile.path));
+            _cropImage(pickedFile);
+            //uploadImage(context, File(pickedFile.path));
           }
         }
       } catch (e) {
@@ -152,6 +155,52 @@ class PhysioProfileScreenState extends State<PhysioProfileScreen> {
       if (context.mounted) {
         showSnackBar(context, 'Permission Denied');
       }
+    }
+  }
+
+  Future<void> _cropImage(XFile pickedFile) async {
+    ImageCropper imageCropper = ImageCropper();
+    CroppedFile? croppedFile = await imageCropper.cropImage(
+      sourcePath: pickedFile.path,
+      cropStyle: CropStyle.circle,
+      aspectRatioPresets: Platform.isAndroid
+          ? [
+              CropAspectRatioPreset.square,
+              CropAspectRatioPreset.ratio3x2,
+              CropAspectRatioPreset.original,
+              CropAspectRatioPreset.ratio4x3,
+              CropAspectRatioPreset.ratio16x9
+            ]
+          : [
+              CropAspectRatioPreset.original,
+              CropAspectRatioPreset.square,
+              CropAspectRatioPreset.ratio3x2,
+              CropAspectRatioPreset.ratio4x3,
+              CropAspectRatioPreset.ratio5x3,
+              CropAspectRatioPreset.ratio5x4,
+              CropAspectRatioPreset.ratio7x5,
+              CropAspectRatioPreset.ratio16x9
+            ],
+      uiSettings: [
+        AndroidUiSettings(
+            toolbarTitle: 'Cortar Imagem',
+            toolbarColor: CustomColors.appBackgroudColor,
+            toolbarWidgetColor: Colors.white,
+            initAspectRatio: CropAspectRatioPreset.original,
+            lockAspectRatio: false),
+        IOSUiSettings(
+          title: 'Cortar Imagem',
+        ),
+        WebUiSettings(
+          context: context,
+        ),
+      ],
+    );
+
+    if (context.mounted && croppedFile != null) {
+      uploadImage(context, croppedFile);
+    } else if (context.mounted) {
+      showSnackBar(context, 'Troca de imagem cancelada.');
     }
   }
 
@@ -244,9 +293,11 @@ class PhysioProfileScreenState extends State<PhysioProfileScreen> {
                                           onTap: () {},
                                           child: Image.network(
                                             snapshot.data!.photoURL!,
-                                            fit: BoxFit.fitHeight,
-                                            height: 200.0,
-                                            width: 200.0,
+                                            fit: BoxFit.contain,
+                                            alignment: Alignment.center,
+                                            //scale: BorderSide.strokeAlignCenter,
+                                            height: 250.0,
+                                            width: 250.0,
                                           ),
                                         ),
                                       ),
@@ -316,11 +367,10 @@ class PhysioProfileScreenState extends State<PhysioProfileScreen> {
                                                       type: FileType.image);
 
                                           if (result != null) {
-                                            _image =
-                                                File(result.files.single.path!);
+                                            _image = XFile(
+                                                result.files.single.path!);
                                             if (context.mounted) {
-                                              await uploadImage(
-                                                  context, _image!);
+                                              await _cropImage(_image!);
                                             }
                                             try {
                                               await FirebaseAuth
