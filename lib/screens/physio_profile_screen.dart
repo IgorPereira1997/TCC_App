@@ -166,30 +166,32 @@ class PhysioProfileScreenState extends State<PhysioProfileScreen> {
       aspectRatioPresets: Platform.isAndroid
           ? [
               CropAspectRatioPreset.square,
-              CropAspectRatioPreset.ratio3x2,
-              CropAspectRatioPreset.original,
-              CropAspectRatioPreset.ratio4x3,
-              CropAspectRatioPreset.ratio16x9
+              //CropAspectRatioPreset.ratio3x2,
+              //CropAspectRatioPreset.original,
+              //CropAspectRatioPreset.ratio4x3,
+              //CropAspectRatioPreset.ratio16x9
             ]
           : [
-              CropAspectRatioPreset.original,
+              //CropAspectRatioPreset.original,
               CropAspectRatioPreset.square,
-              CropAspectRatioPreset.ratio3x2,
-              CropAspectRatioPreset.ratio4x3,
-              CropAspectRatioPreset.ratio5x3,
-              CropAspectRatioPreset.ratio5x4,
-              CropAspectRatioPreset.ratio7x5,
-              CropAspectRatioPreset.ratio16x9
+              //CropAspectRatioPreset.ratio3x2,
+              //CropAspectRatioPreset.ratio4x3,
+              //CropAspectRatioPreset.ratio5x3,
+              //CropAspectRatioPreset.ratio5x4,
+              //CropAspectRatioPreset.ratio7x5,
+              //CropAspectRatioPreset.ratio16x9
             ],
       uiSettings: [
         AndroidUiSettings(
-            toolbarTitle: 'Cortar Imagem',
-            toolbarColor: CustomColors.appBackgroudColor,
-            toolbarWidgetColor: Colors.white,
-            initAspectRatio: CropAspectRatioPreset.original,
-            lockAspectRatio: false),
+          toolbarTitle: 'Cortar Imagem',
+          //lockAspectRatio: true,
+          toolbarColor: CustomColors.appBackgroudColor,
+          toolbarWidgetColor: Colors.white,
+          initAspectRatio: CropAspectRatioPreset.square,
+        ),
         IOSUiSettings(
           title: 'Cortar Imagem',
+          //aspectRatioLockEnabled: true,
         ),
         WebUiSettings(
           context: context,
