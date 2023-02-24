@@ -12,9 +12,7 @@ Future<bool> checkFieldValueExistsOnDB(
     'value': valueChosen,
   });
 
-  final isValueRegistered = result.data;
-
-  if (isValueRegistered) {
+  if (result.data) {
     return true;
   }
   return false;

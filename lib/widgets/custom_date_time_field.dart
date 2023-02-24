@@ -47,79 +47,71 @@ class BirthDateFieldState extends State<BirthDateField> {
   final brazilianDateFormat = DateFormat('dd/MM/yyyy', "pt_BR");
 
   @override
-  void initState() {
-    super.initState();
-    //initializeDateFormatting('pt_BR', null);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Builder(
-      builder: (BuildContext context) {
-        return Localizations.override(
-          context: context,
-          locale: const Locale("pt", "BR"),
-          child: SizedBox(
-            width: double.infinity,
-            height: 60,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20.0),
-              child: Material(
-                color: Colors.white,
-                child: TextFormField(
-                  controller: widget.controller,
-                  decoration: InputDecoration(
-                    enabledBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.transparent),
-                    ),
-                    focusedBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.transparent),
-                    ),
-                    prefixIcon: Padding(
-                      padding: const EdgeInsets.only(left: 10),
-                      child: Icon(
-                        widget.choosedIcon,
-                        size: 20,
-                        color: Colors.black,
+  Widget build(BuildContext context) => Builder(
+        builder: (BuildContext context) {
+          return Localizations.override(
+            context: context,
+            locale: const Locale("pt", "BR"),
+            child: SizedBox(
+              width: double.infinity,
+              height: 60,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20.0),
+                child: Material(
+                  color: Colors.white,
+                  child: TextFormField(
+                    controller: widget.controller,
+                    decoration: InputDecoration(
+                      enabledBorder: const UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.transparent),
                       ),
+                      focusedBorder: const UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.transparent),
+                      ),
+                      prefixIcon: Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Icon(
+                          widget.choosedIcon,
+                          size: 20,
+                          color: Colors.black,
+                        ),
+                      ),
+                      labelText: widget.labelText,
                     ),
-                    labelText: widget.labelText,
+                    enableSuggestions: widget.enableSuggestions,
+                    autocorrect: widget.autocorrect,
+                    keyboardType: widget.keyboardType,
+                    onChanged: widget.onChanged,
+                    onSaved: widget.onSaved,
+                    enabled: widget.enabled,
+                    validator: widget.validator,
+                    readOnly: true,
+                    initialValue: widget.initialValue,
+                    onTap: () async {
+                      DateTime? selectedDate = await showDatePicker(
+                        context: context,
+                        initialDate: _maximumDate,
+                        firstDate: _minimumDate,
+                        lastDate: _maximumDate,
+                        locale: const Locale("pt", "BR"),
+                      );
+                      if (selectedDate != null) {
+                        setState(() {
+                          widget.controller.text =
+                              brazilianDateFormat.format(selectedDate);
+                        });
+                      }
+                      if (widget.onTap != null) {
+                        widget.onTap!();
+                      }
+                    },
+                    autovalidateMode: widget.autoValidate,
+                    inputFormatters: widget.inputFormatters,
                   ),
-                  enableSuggestions: widget.enableSuggestions,
-                  autocorrect: widget.autocorrect,
-                  keyboardType: widget.keyboardType,
-                  onChanged: widget.onChanged,
-                  onSaved: widget.onSaved,
-                  enabled: widget.enabled,
-                  validator: widget.validator,
-                  readOnly: true,
-                  initialValue: widget.initialValue,
-                  onTap: () async {
-                    DateTime? selectedDate = await showDatePicker(
-                      context: context,
-                      initialDate: _maximumDate,
-                      firstDate: _minimumDate,
-                      lastDate: _maximumDate,
-                      locale: const Locale("pt", "BR"),
-                    );
-                    if (selectedDate != null) {
-                      setState(() {
-                        widget.controller.text =
-                            brazilianDateFormat.format(selectedDate);
-                      });
-                    }
-                    if (widget.onTap != null) {
-                      widget.onTap!();
-                    }
-                  },
-                  autovalidateMode: widget.autoValidate,
-                  inputFormatters: widget.inputFormatters,
                 ),
               ),
             ),
-          ),
-        );
-      },
-    );
-  }
+          );
+        },
+      );
 }

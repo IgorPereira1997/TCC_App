@@ -7,7 +7,6 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:tcc_fisio_app/screens/home_app_screen.dart';
 import 'package:tcc_fisio_app/screens/main_screen.dart';
 import 'package:tcc_fisio_app/utils/show_snackbar.dart';
-import 'dart:io';
 
 class FirebaseAuthMethods {
   final FirebaseAuth _auth;
@@ -160,7 +159,6 @@ class FirebaseAuthMethods {
 }
 
 //UPDATE USER (FIRESTORE)
-
 Future<void> updateUserDataFS({
   required String firstName,
   required String lastName,
@@ -210,7 +208,6 @@ Future<bool> checkUserPassword(String password) async {
 }
 
 //UPDATE EMAIL AFTER VERIFICAITON
-
 Future<void> updateYourEmail(
     {required String email, required BuildContext context}) async {
   try {
@@ -257,8 +254,6 @@ Future<void> uploadImage(BuildContext context, CroppedFile? image) async {
     // Upload the file to Firebase Storage
     final bytes = await image!.readAsBytes();
     await ref.putData(bytes);
-
-    //await ref.putFile(image);
 
     // Get the download URL for the uploaded file
     final downloadURL = await ref.getDownloadURL();

@@ -7,23 +7,21 @@ class CustomBackButton extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.topLeft,
-      child: Padding(
-        padding: const EdgeInsets.only(left: 5),
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.transparent,
-            shadowColor: Colors.transparent,
-            elevation: 0.0,
+  Widget build(BuildContext context) => Align(
+        alignment: Alignment.topLeft,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 5),
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.transparent,
+              shadowColor: Colors.transparent,
+              elevation: 0.0,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Icon(FontAwesomeIcons.arrowLeft),
           ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Icon(FontAwesomeIcons.arrowLeft),
         ),
-      ),
-    );
-  }
+      );
 }

@@ -58,21 +58,20 @@ class MyApp extends StatelessWidget {
             // Add any other locales you want to support
           ],
           routes: {
-            HomeAppScreen.routeName: (context) => const HomeAppScreen(),
+            HomeAppScreen.routeName: (context) => HomeAppScreen(),
             MainScreen.routeName: (context) => const MainScreen(),
-            SignUpScreen.routeName: (context) => const SignUpScreen(),
+            SignUpScreen.routeName: (context) => SignUpScreen(),
             SearchPacientScreen.routeName: (context) =>
                 const SearchPacientScreen(),
             ProfilePacientScreen.routeName: (context) =>
                 const ProfilePacientScreen(),
-            ResetPasswordScreen.routeName: (context) =>
-                const ResetPasswordScreen(),
+            ResetPasswordScreen.routeName: (context) => ResetPasswordScreen(),
             PhysioProfileScreen.routeName: (context) =>
                 const PhysioProfileScreen(),
             PhysioChangeEmailScreen.routeName: (context) =>
-                const PhysioChangeEmailScreen(),
+                PhysioChangeEmailScreen(),
             PhysioChangePasswordScreen.routeName: (context) =>
-                const PhysioChangePasswordScreen(),
+                PhysioChangePasswordScreen(),
             PhysioDeleteAccount.routeName: (context) =>
                 const PhysioDeleteAccount(),
             CIFPatientScreen.routeName: (context) => const CIFPatientScreen(),
@@ -93,6 +92,6 @@ class AuthWrapper extends StatelessWidget {
     if (firebaseUser != null) {
       return const MainScreen();
     }
-    return const HomeAppScreen();
+    return HomeAppScreen();
   }
 }

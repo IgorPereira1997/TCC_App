@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -83,8 +82,6 @@ class PhysioProfileScreenState extends State<PhysioProfileScreen> {
       if (user != null) {
         _userController.add(user);
       }
-
-      user = FirebaseAuth.instance.currentUser!;
     });
   }
 
@@ -143,7 +140,6 @@ class PhysioProfileScreenState extends State<PhysioProfileScreen> {
         if (pickedFile != null) {
           if (context.mounted) {
             _cropImage(pickedFile);
-            //uploadImage(context, File(pickedFile.path));
           }
         }
       } catch (e) {
@@ -163,35 +159,18 @@ class PhysioProfileScreenState extends State<PhysioProfileScreen> {
     CroppedFile? croppedFile = await imageCropper.cropImage(
       sourcePath: pickedFile.path,
       cropStyle: CropStyle.circle,
-      aspectRatioPresets: Platform.isAndroid
-          ? [
-              CropAspectRatioPreset.square,
-              //CropAspectRatioPreset.ratio3x2,
-              //CropAspectRatioPreset.original,
-              //CropAspectRatioPreset.ratio4x3,
-              //CropAspectRatioPreset.ratio16x9
-            ]
-          : [
-              //CropAspectRatioPreset.original,
-              CropAspectRatioPreset.square,
-              //CropAspectRatioPreset.ratio3x2,
-              //CropAspectRatioPreset.ratio4x3,
-              //CropAspectRatioPreset.ratio5x3,
-              //CropAspectRatioPreset.ratio5x4,
-              //CropAspectRatioPreset.ratio7x5,
-              //CropAspectRatioPreset.ratio16x9
-            ],
+      aspectRatioPresets: [
+        CropAspectRatioPreset.square,
+      ],
       uiSettings: [
         AndroidUiSettings(
           toolbarTitle: 'Cortar Imagem',
-          //lockAspectRatio: true,
           toolbarColor: CustomColors.appBackgroudColor,
           toolbarWidgetColor: Colors.white,
           initAspectRatio: CropAspectRatioPreset.square,
         ),
         IOSUiSettings(
           title: 'Cortar Imagem',
-          //aspectRatioLockEnabled: true,
         ),
         WebUiSettings(
           context: context,
@@ -291,16 +270,12 @@ class PhysioProfileScreenState extends State<PhysioProfileScreen> {
                                       child: Material(
                                         color: CustomColors.firebaseGrey
                                             .withOpacity(0.3),
-                                        child: InkWell(
-                                          onTap: () {},
-                                          child: Image.network(
-                                            snapshot.data!.photoURL!,
-                                            fit: BoxFit.contain,
-                                            alignment: Alignment.center,
-                                            //scale: BorderSide.strokeAlignCenter,
-                                            height: 250.0,
-                                            width: 250.0,
-                                          ),
+                                        child: Image.network(
+                                          snapshot.data!.photoURL!,
+                                          fit: BoxFit.contain,
+                                          alignment: Alignment.center,
+                                          height: 200.0,
+                                          width: 200.0,
                                         ),
                                       ),
                                     )
@@ -308,15 +283,12 @@ class PhysioProfileScreenState extends State<PhysioProfileScreen> {
                                       child: Material(
                                         color: CustomColors.firebaseGrey
                                             .withOpacity(0.3),
-                                        child: InkWell(
-                                          onTap: () {},
-                                          child: const Padding(
-                                            padding: EdgeInsets.all(20.0),
-                                            child: Icon(
-                                              FontAwesomeIcons.person,
-                                              size: 100,
-                                              color: CustomColors.firebaseGrey,
-                                            ),
+                                        child: const Padding(
+                                          padding: EdgeInsets.all(20.0),
+                                          child: Icon(
+                                            FontAwesomeIcons.person,
+                                            size: 100,
+                                            color: CustomColors.firebaseGrey,
                                           ),
                                         ),
                                       ),

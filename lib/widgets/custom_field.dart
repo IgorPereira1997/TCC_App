@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class CustomField extends StatefulWidget {
+class CustomField extends StatelessWidget {
   const CustomField({
     Key? key,
     required this.choosedIcon,
@@ -40,11 +40,6 @@ class CustomField extends StatefulWidget {
   final List<TextInputFormatter>? inputFormatters;
 
   @override
-  State<CustomField> createState() => _CustomFieldState();
-}
-
-class _CustomFieldState extends State<CustomField> {
-  @override
   Widget build(BuildContext context) => SizedBox(
         width: double.infinity,
         height: 60,
@@ -53,7 +48,7 @@ class _CustomFieldState extends State<CustomField> {
           child: Material(
               color: Colors.white,
               child: TextFormField(
-                controller: widget.controller,
+                controller: controller,
                 decoration: InputDecoration(
                   enabledBorder: const UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.transparent),
@@ -64,26 +59,26 @@ class _CustomFieldState extends State<CustomField> {
                   prefixIcon: Padding(
                     padding: const EdgeInsets.only(left: 10),
                     child: Icon(
-                      widget.choosedIcon,
+                      choosedIcon,
                       size: 20,
                       color: Colors.black,
                     ),
                   ),
                   //hintText: hintText,
-                  labelText: widget.labelText,
+                  labelText: labelText,
                 ),
-                enableSuggestions: widget.enableSuggestions,
-                autocorrect: widget.autocorrect,
-                keyboardType: widget.keyboardType,
-                onChanged: widget.onChanged,
-                onSaved: widget.onSaved,
-                enabled: widget.enabled,
-                validator: widget.validator,
-                readOnly: widget.readOnly ?? false,
-                initialValue: widget.initialValue,
-                onTap: widget.onTap,
-                autovalidateMode: widget.autoValidate,
-                inputFormatters: widget.inputFormatters,
+                enableSuggestions: enableSuggestions,
+                autocorrect: autocorrect,
+                keyboardType: keyboardType,
+                onChanged: onChanged,
+                onSaved: onSaved,
+                enabled: enabled,
+                validator: validator,
+                readOnly: readOnly ?? false,
+                initialValue: initialValue,
+                onTap: onTap,
+                autovalidateMode: autoValidate,
+                inputFormatters: inputFormatters,
               )),
         ),
       );
