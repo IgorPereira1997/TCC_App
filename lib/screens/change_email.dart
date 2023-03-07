@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:tcc_fisio_app/res/custom_colors.dart';
 import 'package:tcc_fisio_app/res/custom_functions.dart';
 import 'package:tcc_fisio_app/screens/home_app_screen.dart';

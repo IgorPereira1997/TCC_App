@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
       ],
       child: Builder(builder: (context) {
         return MaterialApp(
-          title: 'TCC ITP Fisio',
+          title: 'AvaliaFisio',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             primarySwatch: Colors.blue,
@@ -90,7 +90,8 @@ class AuthWrapper extends StatelessWidget {
     final firebaseUser = context.watch<User?>();
 
     if (firebaseUser != null) {
-      return const MainScreen();
+      return const CIFPatientScreen();
+      //return const MainScreen();
     }
     return HomeAppScreen();
   }

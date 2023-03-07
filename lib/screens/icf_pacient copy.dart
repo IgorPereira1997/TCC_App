@@ -4,15 +4,10 @@ import 'package:tcc_fisio_app/widgets/custom_back_button.dart';
 import 'package:tcc_fisio_app/widgets/custom_radio_button.dart';
 import 'package:tcc_fisio_app/widgets/custom_radio_legend.dart';
 
-class CIFPatientScreen extends StatefulWidget {
+class CIFPatientScreen extends StatelessWidget {
   static String routeName = '/patient-cif';
-  const CIFPatientScreen({super.key});
+  CIFPatientScreen({super.key});
 
-  @override
-  State<CIFPatientScreen> createState() => _CIFPatientScreenState();
-}
-
-class _CIFPatientScreenState extends State<CIFPatientScreen> {
   Map<String, dynamic> icf = {
     "FUNÇÃO CORPORAL": {
       "checked": false,
@@ -314,6 +309,7 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
   };
 
 //FUNÇÃO CORPORAL
+
   void _handleFuncaoCorporalChange(bool? value) {
     setState(() {
       icf["FUNÇÃO CORPORAL"]["checked"] = value!;
@@ -334,13 +330,12 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
                 ["FUNÇÕES NEUROMUSCULOESQUELÉTICAS E RELACIONADAS AO MOVIMENTO"]
             ["checked"] = false;
         icf["FUNÇÃO CORPORAL"][
-                "FUNÇÕES DA PELE E ESTRUTURAS RELACIONADAS A QUAISQUER OUTRAS FUNÇÕES DO CORPO"]
+                "FUNÇÕES DA PELE E ESTRUTURAS RELACIONADAS A QUAISER OUTRAS FUNÇÕES DO CORPO"]
             ["checked"] = false;
       }
     });
   }
 
-//FUNÇÃO CORPORAL/FUNÇÕES MENTAIS
   void _handleFuncoesMentaisChange(bool? value) {
     setState(() {
       icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]["checked"] = value!;
@@ -368,7 +363,82 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
     });
   }
 
+  void _handleConscienciaChange(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]["Consiência"]["checked"] =
+          value!;
+    });
+  }
+
+  void _handleOrientacaoChange(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
+          ["Orientação (tempo, lugar, pessoa)"]["checked"] = value!;
+    });
+  }
+
+  void _handleFuncoesIntelectuaisChange(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
+          ["Funções intelectuais (demência)"]["checked"] = value!;
+    });
+  }
+
+  void _handleFuncoesEnergiaImpulsosChange(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
+          ["Funções da energia e de impulsos"]["checked"] = value!;
+    });
+  }
+
+  void _handleSonoChange(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]["Sono"]["checked"] = value!;
+    });
+  }
+
+  void _handleAtencaoChange(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]["Atenção"]["checked"] = value!;
+    });
+  }
+
+  void _handleMemoriaChange(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]["Memória"]["checked"] = value!;
+    });
+  }
+
+  void _handleFuncoesEmocionaisChange(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]["Funções Emocionais"]
+          ["checked"] = value!;
+    });
+  }
+
+  void _handleFuncoesPercepcaoChange(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]["Funções da percepção"]
+          ["checked"] = value!;
+    });
+  }
+
+  void _handleFuncoesCognitivasSuperioresChange(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]["Funções cognitivas superiores"]
+          ["checked"] = value!;
+    });
+  }
+
+  void _handleFuncoesMentaisLingChange(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]["Funções mentais da linguagem"]
+          ["checked"] = value!;
+    });
+  }
+
 //FUNÇÃO CORPORAL/FUNÇÕES SENSORAIS E DE DOR
+
   void _handleFuncoesSensoriaisChange(bool? value) {
     setState(() {
       icf["FUNÇÃO CORPORAL"]["FUNÇÕES SENSORIAIS E DE DOR"]["checked"] = value!;
@@ -385,7 +455,36 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
     });
   }
 
+  void _handleVisaoChange(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"]["FUNÇÕES SENSORIAIS E DE DOR"]["Visão"]
+          ["checked"] = value!;
+    });
+  }
+
+  void _handleAudicaoChange(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"]["FUNÇÕES SENSORIAIS E DE DOR"]["Audição"]
+          ["checked"] = value!;
+    });
+  }
+
+  void _handleVestibularChange(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"]["FUNÇÕES SENSORIAIS E DE DOR"]
+          ["Vestibular (equilíbrio)"]["checked"] = value!;
+    });
+  }
+
+  void _handleDorChange(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"]["FUNÇÕES SENSORIAIS E DE DOR"]["Dor"]["checked"] =
+          value!;
+    });
+  }
+
 //FUNÇÃO CORPORAL/FUNÇÕES DA VOZ E DA FALA
+
   void _handleFuncoesVozFalaChange(bool? value) {
     setState(() {
       icf["FUNÇÃO CORPORAL"]["FUNÇÕES DA VOZ E DA FALA"]["checked"] = value!;
@@ -396,7 +495,15 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
     });
   }
 
+  void _handleVozChange(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"]["FUNÇÕES DA VOZ E DA FALA"]["Voz"]["checked"] =
+          value!;
+    });
+  }
+
 //FUNÇÃO CORPORAL/FUNÇÕES DOS SISTEMAS CARDIOVASCULAR, HEMATOLÓGICO, IMUNOLÓGICO E RESPIRATÓRIO
+
   void _handleFuncoesCardioHematoImunoChange(bool? value) {
     setState(() {
       icf["FUNÇÃO CORPORAL"][
@@ -424,7 +531,49 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
     });
   }
 
+  void _handleFuncoesCoracaoChange(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"][
+              "FUNÇÕES DOS SISTEMAS CARDIOVASCULAR, HEMATOLÓGICO, IMUNOLÓGICO E RESPIRATÓRIO"]
+          ["Funções do Coração"]["checked"] = value!;
+    });
+  }
+
+  void _handlePressaoSanguineaChange(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"][
+              "FUNÇÕES DOS SISTEMAS CARDIOVASCULAR, HEMATOLÓGICO, IMUNOLÓGICO E RESPIRATÓRIO"]
+          ["Pressão Sanguínea"]["checked"] = value!;
+    });
+  }
+
+  void _handleFuncoesHematologicoChange(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"][
+              "FUNÇÕES DOS SISTEMAS CARDIOVASCULAR, HEMATOLÓGICO, IMUNOLÓGICO E RESPIRATÓRIO"]
+          ["Funções do sistema hematológico"]["checked"] = value!;
+    });
+  }
+
+  void _handleFuncoesImunologicoChange(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"][
+                  "FUNÇÕES DOS SISTEMAS CARDIOVASCULAR, HEMATOLÓGICO, IMUNOLÓGICO E RESPIRATÓRIO"]
+              ["Funções do sistema imunológico (alergias, hibersensibilidade)"]
+          ["checked"] = value!;
+    });
+  }
+
+  void _handleFuncoesRespiratorio(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"][
+              "FUNÇÕES DOS SISTEMAS CARDIOVASCULAR, HEMATOLÓGICO, IMUNOLÓGICO E RESPIRATÓRIO"]
+          ["Funções do sistema respiratório"]["checked"] = value!;
+    });
+  }
+
 // FUNÇÃO CORPORAL/FUNÇÕES DOS SISTEMAS DIGESTIVO. METABÓLICO E ENDÓCRINO
+
   void _handleFuncoesDigestivoMetabEndocChange(bool? value) {
     setState(() {
       icf["FUNÇÃO CORPORAL"]
@@ -448,7 +597,41 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
     });
   }
 
+  void _handleFuncoesDigestivasChange(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"]
+              ["FUNÇÕES DOS SISTEMAS DIGESTIVO, METABÓLICO E ENDÓCRINO"]
+          ["Funções digestivas"]["checked"] = value!;
+    });
+  }
+
+  void _handleFuncoesDefecacaoChange(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"]
+              ["FUNÇÕES DOS SISTEMAS DIGESTIVO, METABÓLICO E ENDÓCRINO"]
+          ["Funções de defecação"]["checked"] = value!;
+    });
+  }
+
+  void _handleManutencaoPesoChange(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"]
+              ["FUNÇÕES DOS SISTEMAS DIGESTIVO, METABÓLICO E ENDÓCRINO"]
+          ["Manutenção do peso"]["checked"] = value!;
+    });
+  }
+
+  void _handleFuncoesGlandulasEndoChange(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"]
+                  ["FUNÇÕES DOS SISTEMAS DIGESTIVO, METABÓLICO E ENDÓCRINO"]
+              ["Funções das glândulas endócrinas (mudanças hormonais)"]
+          ["checked"] = value!;
+    });
+  }
+
 //FUNÇÃO CORPORAL/FUNÇÕES GENITURINÁRIAS E REPRODUTIVAS
+
   void _handleFuncoesGenituReprodutivasChange(bool? value) {
     setState(() {
       icf["FUNÇÃO CORPORAL"]["FUNÇÕES GENITURINÁRIAS E REPRODUTIVAS"]
@@ -462,7 +645,22 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
     });
   }
 
+  void _handleFuncoesUrinariasChange(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"]["FUNÇÕES GENITURINÁRIAS E REPRODUTIVAS"]
+          ["Funções Urinárias"]["checked"] = value!;
+    });
+  }
+
+  void _handleFuncoesSexuaisChange(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"]["FUNÇÕES GENITURINÁRIAS E REPRODUTIVAS"]
+          ["Funções Sexuais"]["checked"] = value!;
+    });
+  }
+
 //FUNÇÃO CORPORAL/FUNÇÕES NEUROMUSCULOESQUELÉTICAS E RELACIONADAS AO MOVIMENTO
+
   void _handleFuncoesNeuroMovimentoChange(bool? value) {
     setState(() {
       icf["FUNÇÃO CORPORAL"]
@@ -485,7 +683,40 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
     });
   }
 
+  void _handleMobilidadeArticulacoesChange(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"]
+              ["FUNÇÕES NEUROMUSCULOESQUELÉTICAS E RELACIONADAS AO MOVIMENTO"]
+          ["Mobilidade das articulações"]["checked"] = value!;
+    });
+  }
+
+  void _handleForcaMuscularChange(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"]
+              ["FUNÇÕES NEUROMUSCULOESQUELÉTICAS E RELACIONADAS AO MOVIMENTO"]
+          ["Força Muscular"]["checked"] = value!;
+    });
+  }
+
+  void _handleTonusMuscularChange(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"]
+              ["FUNÇÕES NEUROMUSCULOESQUELÉTICAS E RELACIONADAS AO MOVIMENTO"]
+          ["Tônus muscular"]["checked"] = value!;
+    });
+  }
+
+  void _handleMobimentosInvoluntariosChange(bool? value) {
+    setState(() {
+      icf["FUNÇÃO CORPORAL"]
+              ["FUNÇÕES NEUROMUSCULOESQUELÉTICAS E RELACIONADAS AO MOVIMENTO"]
+          ["Movimentos involuntários"]["checked"] = value!;
+    });
+  }
+
 //FUNÇÃO CORPORAL/FUNÇÕES DA PELE E ESTRUTURAS RELACIONADAS A QUAISQUER OUTRAS FUNÇÕES DO CORPO
+
   void _handleFuncoesPeleEstruturasChange(bool? value) {
     setState(() {
       icf["FUNÇÃO CORPORAL"][
@@ -495,6 +726,7 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
   }
 
 //ESTRUTURA CORPORAL
+
   void _handleEstruturaCorporalChange(bool? value) {
     setState(() {
       icf["ESTRUTURA CORPORAL"]["checked"] = value!;
@@ -524,6 +756,7 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
   }
 
 //ESTRUTURA CORPORAL/ESTRUTURA DO SISTEMA NERVOSO
+
   void _handleEstruturaSistemaNervosoChange(bool? value) {
     setState(() {
       icf["ESTRUTURA CORPORAL"]["ESTRUTURA DO SISTEMA NERVOSO"]["checked"] =
@@ -538,6 +771,7 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
   }
 
 //ESTRUTURA CORPORAL/OLHO, OUVIDO E ESTRUTURAS RELACIONADAS
+
   void _handleEstruturasOlhoOuvidoChange(bool? value) {
     setState(() {
       icf["ESTRUTURA CORPORAL"]["OLHO, OUVIDO E ESTRUTURAS RELACIONADAS"]
@@ -546,6 +780,7 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
   }
 
 //ESTRUTURA CORPORAL/ESTRUTURAS RELACIONADAS A VOZ E FALA
+
   void _handleEstruturasVozFalaChange(bool? value) {
     setState(() {
       icf["ESTRUTURA CORPORAL"]["ESTRUTURAS RELACIONADAS A VOZ E FALA"]
@@ -554,6 +789,7 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
   }
 
 //ESTRUTURA CORPORAL/ESTRUTURAS DOS SISTEMAS CARDIOVASCULAR, IMUNOLÓGICO E RESPIRATÓRIO
+
   void _handleEstruturaCardioImunoRespiratorioChange(bool? value) {
     setState(() {
       icf["ESTRUTURA CORPORAL"][
@@ -563,6 +799,7 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
   }
 
 //ESTRUTURA CORPORAL/ESTRUTURAS RELACIONADAS AO SISTEMAS DIGESTIVO, METABÓLICO E ENDÓCRINO
+
   void _handleEstruturasDigestivoMetabolicoEndocrinoChange(bool? value) {
     setState(() {
       icf["ESTRUTURA CORPORAL"][
@@ -572,6 +809,7 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
   }
 
 //ESTRUTURA CORPORAL/ESTRUTURAS RELACIONADAS AO SISTEMA GENITURINÁRIO E REPRODUTIVO
+
   void _handleEstruturasGenituReprodutivoChange(bool? value) {
     setState(() {
       icf["ESTRUTURA CORPORAL"]
@@ -589,6 +827,7 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
   }
 
 //ESTRUTURA CORPORAL/ESTRUTURAS RELACIONADAS AO MOVIMENTO
+
   void _handleEstruturasMovimentoChange(bool? value) {
     setState(() {
       icf["ESTRUTURA CORPORAL"]["ESTRUTURAS RELACIONADAS AO MOVIMENTO"]
@@ -611,6 +850,7 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
   }
 
 //ESTRUTURA CORPORAL/PELE E ESTRUTURAS RELACIONADAS A QUAISQUER OUTRAS ESTRUTURAS DO CORPO
+
   void _handlePeleEstruturasQualquerChange(bool? value) {
     setState(() {
       icf["ESTRUTURA CORPORAL"][
@@ -620,6 +860,7 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
   }
 
 //ATIVIDADES E PARTICIPAÇÃO
+
   void _handleAtividadesParticipacaoChange(bool? value) {
     setState(() {
       icf["ATIVIDADES E PARTICIPAÇÃO"]["checked"] = value!;
@@ -645,6 +886,7 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
   }
 
 //ATIVIDADES E PARTICIPAÇÃO/APRENDIZAGEM E APLICAÇÃO DO CONHECIMENTO
+
   void _handleAprendizagemConhecimentoChange(bool? value) {
     setState(() {
       icf["ATIVIDADES E PARTICIPAÇÃO"]
@@ -661,6 +903,7 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
   }
 
 //ATIVIDADES E PARTICIPAÇÃO/TAREFAS E DEMANDAS GERAIS
+
   void _handleTarefasDemandasGeraisChange(bool? value) {
     setState(() {
       icf["ATIVIDADES E PARTICIPAÇÃO"]["TAREFAS E DEMANDAS GERAIS"]["checked"] =
@@ -675,6 +918,7 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
   }
 
 //ATIVIDADES E PARTICIPAÇÃO/COMUNICAÇÃO
+
   void _handleComunicacaoChange(bool? value) {
     setState(() {
       icf["ATIVIDADES E PARTICIPAÇÃO"]["COMUNICAÇÃO"]["checked"] = value!;
@@ -693,6 +937,7 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
   }
 
 //ATIVIDADES E PARTICIPAÇÃO/MOBILIDADE
+
   void _handleMobilidadeChange(bool? value) {
     setState(() {
       icf["ATIVIDADES E PARTICIPAÇÃO"]["MOBILIDADE"]["checked"] = value!;
@@ -717,6 +962,7 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
   }
 
 //ATIVIDADES E PARTICIPAÇÃO/CUIDADO PESSOAL
+
   void _handleCuidadoPessoalChange(bool? value) {
     setState(() {
       icf["ATIVIDADES E PARTICIPAÇÃO"]["CUIDADO PESSOAL"]["checked"] = value!;
@@ -743,6 +989,7 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
   }
 
 //ATIVIDADES E PARTICIPAÇÃO/VIDA DOMÉSTICA
+
   void _handleVidaDomesticaChange(bool? value) {
     setState(() {
       icf["ATIVIDADES E PARTICIPAÇÃO"]["VIDA DOMÉSTICA"]["checked"] = value!;
@@ -760,6 +1007,7 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
   }
 
 //ATIVIDADES E PARTICIPAÇÃO/RELAÇÕES E INTERAÇÕES INTERPESSOAIS
+
   void _hanbleRelacoesInteracoesInterpessoaisChange(bool? value) {
     setState(() {
       icf["ATIVIDADES E PARTICIPAÇÃO"]["RELAÇÕES E INTERAÇÕES INTERPESSOAIS"]
@@ -780,6 +1028,7 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
   }
 
 //ATIVIDADES E PARTICIPAÇÃO/ÁREAS PRINCIPAIS DA VIDA
+
   void _handleAreasPrincipaisVidaChange(bool? value) {
     setState(() {
       icf["ATIVIDADES E PARTICIPAÇÃO"]["ÁREAS PRINCIPAIS DA VIDA"]["checked"] =
@@ -796,6 +1045,7 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
   }
 
 //ATIVIDADES E PARTICIPAÇÃO/VIDA COMUNITÁRIA, SOCIAL E CÍVICA
+
   void _handleVidaComunitariaChange(bool? value) {
     setState(() {
       icf["ATIVIDADES E PARTICIPAÇÃO"]["VIDA COMUNITÁRIA, SOCIAL E CÍVICA"]
@@ -812,6 +1062,7 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
   }
 
 //ATIVIDADES E PARTICIPAÇÃO/QUALQUER OUTRA ATIVIDADE E PARTICIPAÇÃO
+
   void _handleQualquerAtividadeParticipacaoChange(bool? value) {
     setState(() {
       icf["ATIVIDADES E PARTICIPAÇÃO"]
@@ -820,6 +1071,7 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
   }
 
 //FATORES AMBIENTAIS
+
   void _handleFatoresAmbientaisChange(bool? value) {
     setState(() {
       icf["FATORES AMBIENTAIS"]["checked"] = value!;
@@ -838,6 +1090,7 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
   }
 
 //FATORES AMBIENTAIS/PRODUTOS E TECNOLOGIA
+
   void _handleProdutosTecnologiaChange(bool? value) {
     setState(() {
       icf["FATORES AMBIENTAIS"]["PRODUTOS E TECNOLOGIA"]["checked"] = value!;
@@ -860,6 +1113,7 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
   }
 
 //FATORES AMBIENTAIS/AMBIENTE NATURAL E MUDANÇAS AMBIENTAIS
+
   void _handleAmbienteNaturalMudancasAmbientaisChange(bool? value) {
     setState(() {
       icf["FATORES AMBIENTAIS"]["AMBIENTE NATURAL E MUDANÇAS AMBIENTAIS"]
@@ -876,6 +1130,7 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
   }
 
 //FATORES AMBIENTAIS/APOIO E RELACIONAMENTOS
+
   void _handleApoioRelacionamentosChange(bool? value) {
     setState(() {
       icf['FATORES AMBIENTAIS']["APOIO E RELACIONAMENTOS"]["checked"] = value!;
@@ -901,6 +1156,7 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
   }
 
 //FATORES AMBIENTAIS/ATITUDES
+
   void _handleAtitudesChange(bool? value) {
     setState(() {
       icf["FATORES AMBIENTAIS"]["ATITUDES"]["checked"] = value!;
@@ -928,6 +1184,7 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
   }
 
 //FATORES AMBIENTAIS/SERVIÇOS, SISTEMAS E POLÍTICAS
+
   void _handleServicosSistemasPoliticasChange(bool? value) {
     setState(() {
       icf["FATORES AMBIENTAIS"]["SERVIÇOS, SISTEMAS E POLÍTICAS"]["checked"] =
@@ -950,6 +1207,7 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
   }
 
 //FATORES AMBIENTAIS/QUAISQUER OUTROS FATORES AMBIENTAIS
+
   void _handleQuaisquerFatoresAmbientaisChange(bool? value) {
     setState(() {
       icf["FATORES AMBIENTAIS"]["QUAISQUER OUTROS FATORES AMBIENTAIS"]
@@ -994,195 +1252,86 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
                           icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]["checked"])
                         Column(
                           children: [
-                            const RadioLegend(),
+                            const RadioLegend(values: [0, 1, 2, 3, 4, 8, 9]),
                             CheckboxListTile(
                               title: const Text('Consciência'),
                               value: icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                  ["Consciência"]["checked"],
-                              onChanged: ((value) => setState(() {
-                                    icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                        ["Consciência"]["checked"] = value;
-                                  })),
+                                  ["Consiência"]["checked"],
+                              onChanged: _handleConscienciaChange,
                             ),
                             if (icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                ["Consciência"]["checked"])
-                              CustomRadio(onChanged: (newValue) {
-                                icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                    ["Consciência"]["value"] = newValue;
-                              }),
+                                ["Consiência"]["checked"])
+                              CustomRadio(
+                                  values: const [0, 1, 2, 3, 4, 8, 9],
+                                  onChanged: (newValue) {
+                                    icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
+                                        ["Consiência"]["value"] = newValue;
+                                  }),
                             CheckboxListTile(
                               title: const Text(
                                   'Orientação (tempo, lugar, pessoa)'),
                               value: icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
                                       ["Orientação (tempo, lugar, pessoa)"]
                                   ["checked"],
-                              onChanged: ((value) => setState(() {
-                                    icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"][
-                                            "Orientação (tempo, lugar, pessoa)"]
-                                        ["checked"] = value;
-                                  })),
+                              onChanged: _handleOrientacaoChange,
                             ),
                             if (icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
                                     ["Orientação (tempo, lugar, pessoa)"]
                                 ["checked"])
                               CustomRadio(
+                                values: const [0, 1, 2, 3, 4, 8, 9],
                                 onChanged: (newValue) {
                                   icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
                                           ["Orientação (tempo, lugar, pessoa)"]
                                       ["value"] = newValue;
                                 },
                               ),
-                            CheckboxListTile(
-                              title:
-                                  const Text('Funções intelectuais (demência)'),
-                              value: icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                      ["Funções intelectuais (demência)"]
-                                  ["checked"],
-                              onChanged: ((value) => setState(() {
-                                    icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                            ["Funções intelectuais (demência)"]
-                                        ["checked"] = value;
-                                  })),
-                            ),
-                            if (icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                ["Funções intelectuais (demência)"]["checked"])
-                              CustomRadio(onChanged: (newValue) {
-                                icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                        ["Funções intelectuais (demência)"]
-                                    ["value"] = newValue;
-                              }),
+                            // TODO fazer funções intelectuais (demência)
                             CheckboxListTile(
                               title: const Text(
                                   'Funções da energia e de impulsos'),
                               value: icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
                                       ["Funções da energia e de impulsos"]
                                   ["checked"],
-                              onChanged: ((value) => setState(() {
-                                    icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                            ["Funções da energia e de impulsos"]
-                                        ["checked"] = value;
-                                  })),
+                              onChanged: _handleFuncoesEnergiaImpulsosChange,
                             ),
                             if (icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
                                 ["Funções da energia e de impulsos"]["checked"])
-                              CustomRadio(onChanged: (newValue) {
-                                icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                        ["Funções da energia e de impulsos"]
-                                    ["value"] = newValue;
-                              }),
+                              CustomRadio(
+                                  values: const [0, 1, 2, 3, 4, 8, 9],
+                                  onChanged: (newValue) {
+                                    icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
+                                            ["Funções da energia e de impulsos"]
+                                        ["value"] = newValue;
+                                  }),
                             CheckboxListTile(
                               title: const Text('Sono'),
                               value: icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
                                   ["Sono"]["checked"],
-                              onChanged: ((value) => setState(() {
-                                    icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                        ["Sono"]["checked"] = value;
-                                  })),
+                              onChanged: _handleSonoChange,
                             ),
                             if (icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
                                 ["Sono"]["checked"])
-                              CustomRadio(onChanged: (newValue) {
-                                icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                    ["Sono"]["value"] = newValue;
-                              }),
+                              CustomRadio(
+                                  values: const [0, 1, 2, 3, 4, 8, 9],
+                                  onChanged: (newValue) {
+                                    icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
+                                        ["Sono"]["value"] = newValue;
+                                  }),
                             CheckboxListTile(
                               title: const Text('Atenção'),
                               value: icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
                                   ["Atenção"]["checked"],
-                              onChanged: ((value) => setState(() {
-                                    icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                        ["Atenção"]["checked"] = value;
-                                  })),
+                              onChanged: _handleAtencaoChange,
                             ),
                             if (icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
                                 ["Atenção"]["checked"])
-                              CustomRadio(onChanged: (newValue) {
-                                icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                    ["Atenção"]["value"] = newValue;
-                              }),
-                            CheckboxListTile(
-                              title: const Text('Memória'),
-                              value: icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                  ["Memória"]["checked"],
-                              onChanged: ((value) => setState(() {
+                              CustomRadio(
+                                  values: const [0, 1, 2, 3, 4, 8, 9],
+                                  onChanged: (newValue) {
                                     icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                        ["Memória"]["checked"] = value;
-                                  })),
-                            ),
-                            if (icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                ["Memória"]["checked"])
-                              CustomRadio(onChanged: (newValue) {
-                                icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                    ["Memória"]["value"] = newValue;
-                              }),
-                            CheckboxListTile(
-                              title: const Text('Funções Emocionais'),
-                              value: icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                  ["Funções Emocionais"]["checked"],
-                              onChanged: ((value) => setState(() {
-                                    icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                            ["Funções Emocionais"]["checked"] =
-                                        value;
-                                  })),
-                            ),
-                            if (icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                ["Funções Emocionais"]["checked"])
-                              CustomRadio(onChanged: (newValue) {
-                                icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                    ["Funções Emocionais"]["value"] = newValue;
-                              }),
-                            CheckboxListTile(
-                              title: const Text('Funções da percepção'),
-                              value: icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                  ["Funções da percepção"]["checked"],
-                              onChanged: ((value) => setState(() {
-                                    icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                            ["Funções da percepção"]
-                                        ["checked"] = value;
-                                  })),
-                            ),
-                            if (icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                ["Funções da percepção"]["checked"])
-                              CustomRadio(onChanged: (newValue) {
-                                icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                        ["Funções da percepção"]["value"] =
-                                    newValue;
-                              }),
-                            CheckboxListTile(
-                              title:
-                                  const Text('Funções cognitivas superiores'),
-                              value: icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                  ["Funções cognitivas superiores"]["checked"],
-                              onChanged: ((value) => setState(() {
-                                    icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                            ["Funções cognitivas superiores"]
-                                        ["checked"] = value;
-                                  })),
-                            ),
-                            if (icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                ["Funções cognitivas superiores"]["checked"])
-                              CustomRadio(onChanged: (newValue) {
-                                icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                        ["Funções cognitivas superiores"]
-                                    ["value"] = newValue;
-                              }),
-                            CheckboxListTile(
-                              title: const Text('Funções mentais da linguagem'),
-                              value: icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                  ["Funções mentais da linguagem"]["checked"],
-                              onChanged: ((value) => setState(() {
-                                    icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                            ["Funções mentais da linguagem"]
-                                        ["checked"] = value;
-                                  })),
-                            ),
-                            if (icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                ["Funções mentais da linguagem"]["checked"])
-                              CustomRadio(onChanged: (newValue) {
-                                icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                        ["Funções mentais da linguagem"]
-                                    ["value"] = newValue;
-                              }),
+                                        ["Atenção"]["value"] = newValue;
+                                  })
                           ],
                         ),
                     ],
@@ -1205,7 +1354,7 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
                               ["ESTRUTURA DO SISTEMA NERVOSO"]["checked"])
                         Column(
                           children: [
-                            const RadioLegend(),
+                            const RadioLegend(values: [0, 1, 2, 3, 4, 8, 9]),
                             CheckboxListTile(
                               title: const Text('Cérebro'),
                               value: icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
@@ -1214,10 +1363,12 @@ class _CIFPatientScreenState extends State<CIFPatientScreen> {
                             ),
                             if (icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
                                 ["Consiência"]["checked"])
-                              CustomRadio(onChanged: (newValue) {
-                                icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
-                                    ["Consiência"]["value"] = newValue;
-                              }),
+                              CustomRadio(
+                                  values: const [0, 1, 2, 3, 4, 8, 9],
+                                  onChanged: (newValue) {
+                                    icf["FUNÇÃO CORPORAL"]["FUNÇÕES MENTAIS"]
+                                        ["Consiência"]["value"] = newValue;
+                                  }),
                           ],
                         ),
                     ],
